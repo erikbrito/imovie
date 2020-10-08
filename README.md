@@ -24,7 +24,7 @@ $ npm start
 or
 $ expo start
 
-# Open the Expo app and access via QR Code or run your cell phone emulator via Android Studio by entering the local address that is running the app
+$ Open the Expo app and access via QR Code or run your cell phone emulator via Android Studio by entering the local address that is running the app
 
 ### 🛠 Tecnologias
 
