@@ -1,6 +1,8 @@
-# movieflix
+# MOVIEFLIX
 
-#Status: In Progress
+![photo_2020-10-08_00-28-52](https://user-images.githubusercontent.com/5699834/95501637-fec84880-097e-11eb-9391-75de1812fb56.jpg)
+
+### Status: In Progress
 
 ### Features
 
