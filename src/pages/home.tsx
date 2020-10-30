@@ -1,50 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
-import { Searchbar } from 'react-native-paper'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import api from '../services/api'
 
-interface movies {
-  title: string | null;
+import { connect } from 'react-redux'
+import { bindActionCreators, Dispatch } from 'redux'
+
+import { Films } from '../Redux/types'
+import { AplicationState } from '../Redux/store'
+import * as FilmsActions from '../Redux/actions'
+import { loadRequest } from '../Redux/actions'
+
+interface StateProps {
+  films: Films[];
   poster_path: string;
+  overview: string;
 }
 
-const Home = () => {
-  const [SearchQuery, setSearchQuery] = useState<string>('');
-  const [movies, setMovies] = useState<any>([]);
+interface DispatchProps {
+  loadRequest(): void
+}
 
+type Props = StateProps & DispatchProps
+
+const Home: React.FC<Props> = (state) => {
   useEffect(() => {
-    api.get('/movie?api_key=0087505ff8561639dc9744342748aeed').then((repos) => {
-      const allRepos = repos.data.results
-      setMovies(allRepos)
-    });
-
+    loadRequest()
   }, []);
+
+  const navigation = useNavigation();
+
+  const itemPressed = (index: any) => {
+    navigation.navigate('Info',
+      { movie: state.films[index] }
+    )
+  }
 
   return (
     <View style={styles.container}>
 
-      <Searchbar
-        placeholder="Search"
-        onChangeText={(query: string) => setSearchQuery(query)}
-        value={SearchQuery}
-        style={styles.searchbar}
-      />
-
       <ScrollView>
         <View style={styles.containerImages}>
 
-          <View style={{ flexDirection: 'column', margin: 10, justifyContent: "space-between" }}>
-            {Object.keys(movies).map((index: any) => {
+          <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
+            {Object.keys(state.films).map((index: any) => {
               return (
-                <View key={index} style={styles.containerMovie}>
-                  <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${movies[index].poster_path}` }} style={styles.images} />
-                  <View style={{ marginRight: 260 }}>
-                    <Text style={styles.title}>{movies[index].title}</Text>
-                    <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{movies[index].overview}</Text>
+                <TouchableHighlight onPress={ () => itemPressed(index)} underlayColor="lightgray" key={index}>
+
+                  <View key={index} style={styles.containerMovie}>
+                    <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${state.films[index].poster_path}` }} style={styles.images} />
+                    
+                    <View style={{ marginRight: 260 }}>
+                      <Text style={styles.title}>{state.films[index].title}</Text>
+                      <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{state.films[index].overview}</Text>
+                    </View>
+
                   </View>
-                </View>
-              )
+
+                </TouchableHighlight>
+                )
             })}
           </View>
 
@@ -55,6 +69,14 @@ const Home = () => {
     </View>
   )
 }
+
+const mapStateToProps = (state: AplicationState) => ({
+  films: state.films.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => (
+  bindActionCreators(FilmsActions, dispatch)
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -83,8 +105,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   overview: {
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    paddingTop: 7,
   },
 })
 
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
