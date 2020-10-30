@@ -8,5 +8,3 @@ const api = axios.create({
 })
 
 export default api
-
-// https://api.themoviedb.org/3/discover/movie?api_key=0087505ff8561639dc9744342748aeed
