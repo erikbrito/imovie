@@ -14,7 +14,7 @@ const Home = () => {
   const [movies, setMovies] = useState<any>([]);
 
   useEffect(() => {
-    api.get('/movie?api_key=0087505ff8561639dc9744342748aeed').then((repos) => {
+    api.get(`/movie?api_key=${ process.env.API_KEY }`).then((repos) => {
       const allRepos = repos.data.results
       setMovies(allRepos)
     });
