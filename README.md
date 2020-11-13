@@ -1,7 +1,9 @@
 # MOVIEFLIX
 
-<img src="https://user-images.githubusercontent.com/5699834/95501637-fec84880-097e-11eb-9391-75de1812fb56.jpg?" height="650" width="320">
-<img src="https://user-images.githubusercontent.com/5699834/99025805-75d99980-2548-11eb-9653-5e31ea5eaa69.jpg" height="650" width="320">
+<p float="left">
+<img src="https://user-images.githubusercontent.com/5699834/95501637-fec84880-097e-11eb-9391-75de1812fb56.jpg?" height="550" width="280">
+<img src="https://user-images.githubusercontent.com/5699834/99025805-75d99980-2548-11eb-9653-5e31ea5eaa69.jpg" height="550" width="280">
+</p
 
 ### Status: In Progress
 
