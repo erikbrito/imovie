@@ -7,7 +7,7 @@ import store  from './Redux/store';
 
 import Home from './pages/home';
 import Trending from './pages/trending';
-import Info from './pages/info';
+import About from './pages/about';
 
 const AppStack = createStackNavigator()
 
@@ -18,7 +18,7 @@ const Routes = () => {
         <AppStack.Navigator>
           <AppStack.Screen name="Home" component={Home} />
           <AppStack.Screen name="Trending" component={Trending} />
-          <AppStack.Screen name="Info" component={Info} />
+          <AppStack.Screen name="About" component={About} />
         </AppStack.Navigator>
       </NavigationContainer>
     </Provider>

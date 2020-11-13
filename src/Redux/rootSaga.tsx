@@ -1,9 +1,11 @@
-import { all } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
 
-import { load } from './sagas'
+import load from './Home/sagas'
+import  watchRequestSaga from './Info/sagas'
 
 export default function* rootSaga() {
   return yield all([
-    load(),
+    fork (load),
+    fork (watchRequestSaga)
   ])
 }

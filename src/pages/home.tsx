@@ -2,14 +2,10 @@ import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-
-import { connect } from 'react-redux'
-import { bindActionCreators, Dispatch } from 'redux'
-
-import { Films } from '../Redux/types'
+import { useSelector } from 'react-redux'
+import { Films } from '../Redux/Home/types'
 import { AplicationState } from '../Redux/store'
-import * as FilmsActions from '../Redux/actions'
-import { loadRequest } from '../Redux/actions'
+import { loadRequest } from '../Redux/Home/actions'
 
 interface StateProps {
   films: Films[];
@@ -23,16 +19,18 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps
 
-const Home: React.FC<Props> = (state) => {
+const Home: React.FC<Props> = () => {
   useEffect(() => {
     loadRequest()
   }, []);
 
+  const films = useSelector((state: AplicationState) => state.films.data)
+
   const navigation = useNavigation();
 
   const itemPressed = (index: any) => {
-    navigation.navigate('Info',
-      { movie: state.films[index] }
+    navigation.navigate('About',
+      { movie: films[index] }
     )
   }
 
@@ -43,16 +41,16 @@ const Home: React.FC<Props> = (state) => {
         <View style={styles.containerImages}>
 
           <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
-            {Object.keys(state.films).map((index: any) => {
+            {Object.keys(films).map((index: any) => {
               return (
                 <TouchableHighlight onPress={ () => itemPressed(index)} underlayColor="lightgray" key={index}>
 
                   <View key={index} style={styles.containerMovie}>
-                    <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${state.films[index].poster_path}` }} style={styles.images} />
+                    <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${films[index].poster_path}` }} style={styles.images} />
                     
                     <View style={{ marginRight: 260 }}>
-                      <Text style={styles.title}>{state.films[index].title}</Text>
-                      <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{state.films[index].overview}</Text>
+                      <Text style={styles.title}>{films[index].title}</Text>
+                      <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{films[index].overview}</Text>
                     </View>
 
                   </View>
@@ -69,14 +67,6 @@ const Home: React.FC<Props> = (state) => {
     </View>
   )
 }
-
-const mapStateToProps = (state: AplicationState) => ({
-  films: state.films.data
-})
-
-const mapDispatchToProps = (dispatch: Dispatch) => (
-  bindActionCreators(FilmsActions, dispatch)
-)
 
 const styles = StyleSheet.create({
   container: {
@@ -110,4 +100,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home
