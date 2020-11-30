@@ -2,13 +2,17 @@ import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
-import { Films } from '../Redux/Home/types'
+import { useDispatch, useSelector } from 'react-redux'
+import { Actions, Animations, War } from '../Redux/Home/types'
 import { AplicationState } from '../Redux/store'
 import { loadRequest } from '../Redux/Home/actions'
+import { fetchVideo } from '../Redux/Info/actions'
+import { Searchbar } from 'react-native-paper';
 
 interface StateProps {
-  films: Films[];
+  actions: Actions[];
+  animations: Animations[];
+  war: War[];
   poster_path: string;
   overview: string;
 }
@@ -24,41 +28,117 @@ const Home: React.FC<Props> = () => {
     loadRequest()
   }, []);
 
-  const films = useSelector((state: AplicationState) => state.films.data)
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const searchPress = () => {
+    navigation.navigate('Search',
+      { movie: searchQuery }
+    )
+  }
+
+  const onChangeSearch = (query: any) => setSearchQuery(query);
+
+  const actions = useSelector((state: AplicationState) => state.films.actions)
+  const animations = useSelector((state: AplicationState) => state.films.animations)
+  const war = useSelector((state: AplicationState) => state.films.war)
 
   const navigation = useNavigation();
 
-  const itemPressed = (index: any) => {
-    navigation.navigate('About',
-      { movie: films[index] }
-    )
+  const dispatch = useDispatch()
+
+  const itemActions = (index: any) => {
+    dispatch(fetchVideo(actions[index].id))
+    navigation.navigate('About')
+  }
+
+  const itemAnimations = (index: any) => {
+    dispatch(fetchVideo(animations[index].id))
+    navigation.navigate('About')
+  }
+  
+  const itemWar = (index: any) => {
+    dispatch(fetchVideo(war[index].id))
+    navigation.navigate('About')
   }
 
   return (
     <View style={styles.container}>
 
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+        onSubmitEditing={searchPress}
+        style={styles.searchbar}
+      />
+
       <ScrollView>
-        <View style={styles.containerImages}>
+        <Text style={styles.title}>Action:</Text>
 
-          <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
-            {Object.keys(films).map((index: any) => {
-              return (
-                <TouchableHighlight onPress={ () => itemPressed(index)} underlayColor="lightgray" key={index}>
+        <View>
+          <ScrollView horizontal={true}>
 
-                  <View key={index} style={styles.containerMovie}>
-                    <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${films[index].poster_path}` }} style={styles.images} />
-                    
-                    <View style={{ marginRight: 260 }}>
-                      <Text style={styles.title}>{films[index].title}</Text>
-                      <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{films[index].overview}</Text>
+            <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
+              {Object.keys(actions).map((index: any) => {
+                return (
+                  <TouchableHighlight onPress={() => itemActions(index)} underlayColor="lightgray" key={index}>
+
+                    <View key={index}>
+                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
+
                     </View>
 
-                  </View>
-
-                </TouchableHighlight>
+                  </TouchableHighlight>
                 )
-            })}
-          </View>
+              })}
+            </View>
+
+          </ScrollView>
+        </View>
+
+        <Text style={styles.title}>Animation:</Text>
+
+        <View>
+
+          <ScrollView horizontal={true}>
+            <View style={{ flexDirection: 'row' }}>
+              {Object.keys(animations).map((index: any) => {
+                return (
+                  <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="lightgray" key={index}>
+
+                    <View key={index}>
+                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
+
+                    </View>
+
+                  </TouchableHighlight>
+                )
+              })}
+            </View>
+          </ScrollView>
+
+        </View>
+
+        <Text style={styles.title}>War:</Text>
+
+        <View>
+
+          <ScrollView horizontal={true}>
+            <View style={{ flexDirection: 'row' }}>
+              {Object.keys(war).map((index: any) => {
+                return (
+                  <TouchableHighlight onPress={() => itemWar(index)} underlayColor="lightgray" key={index}>
+
+                    <View key={index}>
+                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
+
+                    </View>
+
+                  </TouchableHighlight>
+                )
+              })}
+            </View>
+          </ScrollView>
 
         </View>
       </ScrollView>
@@ -75,14 +155,8 @@ const styles = StyleSheet.create({
   searchbar: {
     margin: 4,
   },
-  containerImages: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   containerMovie: {
     margin: 5,
-    flex: 1,
     flexDirection: 'row'
   },
   images: {
@@ -92,7 +166,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   title: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 18,
+    margin: 5, 
+    marginLeft: 10,
+    color: '#6200ee'
   },
   overview: {
     flexWrap: 'wrap',

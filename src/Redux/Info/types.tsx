@@ -15,12 +15,19 @@ export interface Video {
   key: number
   name: string
 }
+export interface Information {
+  id: number
+  overview: string
+  title: string
+  name: string
+}
 
 /**
  * State types
  */
  export interface VideoState {
    readonly data: Video[]
+   readonly information: Information | any
    readonly fetch: boolean
    readonly error: boolean
  }

@@ -10,18 +10,26 @@ export enum FilmsTypes {
 /**
  * Data Types
  */
-export interface Films {
+export interface Actions {
   id: number
-  title: string
   poster_path: string
-  overview: string
+}
+export interface Animations {
+  id: number
+  poster_path: string
+}
+export interface War {
+  id: number
+  poster_path: string
 }
 
 /**
  * State types
  */
  export interface FilmsState {
-   readonly data: Films[]
+   readonly actions: Actions[]
+   readonly animations: Animations[]
+   readonly war: War[]
    readonly loading: boolean
    readonly error: boolean
  }

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, Platform } from 'react-native'
-import { useRoute } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchVideo } from '../Redux/Info/actions'
+import { useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
-import { Video } from '../Redux/Info/types'
+import { Video, Information } from '../Redux/Info/types'
 import { WebView } from 'react-native-webview';
+import { Button, Card, TouchableRipple } from 'react-native-paper';
 
 interface Params {
   video: Video[],
@@ -16,121 +15,141 @@ interface Params {
   overview: string
 }
 
-type Props = Params
+interface Infor {
+  information: Information,
+}
+
+type Props = Params & Infor
 
 const Info: React.FC<Props> = () => {
 
-  const route = useRoute()
-  const routeParams = route.params as Params
-
-  const id_video = routeParams.movie.id
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchVideo(id_video))
-  }, []);
-  // const films = useSelector((state: AplicationState) => state.films.data)
-
   const video = useSelector((state: AplicationState) => state.video.data)
-  // console.log(video)
+  const information = useSelector((state: AplicationState) => state.video.information)
 
-  //635302
-  // const video = useSelector((state: AplicationState) => state.video.data)
-  // console.log(video)
-  // dispatch(fetchVideo(id_video))
-  // const video = useSelector((state: AplicationState) => state.video.array)
-  // console.log('YO')
+  const genero = () => {
+    const gen = information.genres.map((genres: any) => genres.name)
+    return gen.join(', ')
+  }
 
-  return (
-    <View style={styles.container}>
+  if (Object.keys(information).length === 0) {
+    return (
+      <View style={{ flex:1, justifyContent: "center",alignItems: "center" }}>
+        <Text>Loading...</Text>
+      </View>
+    )
+  } else {
+    return (
+      <View style={styles.container}>
 
-      <ScrollView>
-        <View style={styles.containerImages}>
+        <ScrollView>
 
-          <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
-
+          <View style={{ flex: 1 }}>
 
             <View style={styles.containerMovie}>
-              <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${routeParams.movie.backdrop_path}` }} style={styles.images} />
+              <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${information.poster_path}` }} style={styles.images} />
 
-              <View style={styles.text}>
-                <Text style={styles.title}>{routeParams.movie.title}</Text>
+              <Card style={{ flex: 1, margin: 1 }}>
+                <View style={styles.text}>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'center', margin: 15 }}>
-                  <Text style={styles.date}>{routeParams.movie.release_date.slice(0, 4)}</Text>
-                  <Text style={{ fontWeight: 'normal' }}>Votes: </Text>
-                  <Text style={{ fontWeight: 'normal' }}> {routeParams.movie.vote_average}/10</Text>
+                  <Text numberOfLines={4} style={styles.title}>{information.title}</Text>
+
+                  <Text style={styles.date}>{information.release_date.slice(0, 4)}</Text>
+
+                  <View style={{ flexDirection: 'row', justifyContent: "flex-start", marginLeft: 5, marginTop: 5 }}>
+                    <Text style={{ fontWeight: 'normal' }}>Votes: </Text>
+                    <Text style={{ fontWeight: 'normal' }}> {information.vote_average}/10</Text>
+                  </View>
+
                 </View>
 
-                <Text style={{ fontWeight: 'bold', fontSize: 15, marginTop: 30 }}>Overview</Text>
-                <Text numberOfLines={10} ellipsizeMode="tail" style={styles.overview}>{routeParams.movie.overview}</Text>
-              </View>
+                <View style={{ flex: 1, justifyContent: "flex-end", margin: 8 }}>
+                  <TouchableRipple>
+                    <Button icon='heart' mode='contained' style={{ position: "relative", bottom: 5 }}>
+                      Favorite
+                    </Button>
+                  </TouchableRipple>
+                </View>
 
-              {
-                Object.keys(video).slice(1, 2).map((index: any) => {
-                  return (
-                    <View key={index} style={{ margin: 5, marginTop: 50 }}>
-
-                      <View>
-                        <Text style={styles.videoText}>Video</Text>
-
-                        <WebView
-                          allowsFullscreenVideo
-                          allowInlineMediaPlayback
-                          mediaPlaybackRequiresUserAction
-                          style={styles.WebViewContainer}
-                          source={{ uri: `https://www.youtube.com/embed/${video[index].key}` }}
-                        />
-
-                      </View>
-
-                    </View>
-                  )
-                })
-              }
+              </Card>
 
             </View>
 
+            <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 15 }}>
+              <Text style={{ fontWeight: 'bold' }}>Genres: </Text>
+
+              <Text numberOfLines={2}>{genero()}</Text>
+            </View>
+
+            <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 5 }}>
+              <Text style={{ fontWeight: 'bold' }}>Runtime:</Text>
+
+              <Text> {information.runtime} minutes</Text>
+            </View>
+
+            <View style={{ flexDirection: 'column', margin: 10 }}>
+              <Text numberOfLines={10} ellipsizeMode="tail" style={styles.overview}>{information.overview}</Text>
+            </View>
+
+
+            {
+              Object.keys(video).slice(0, 1).map((index: any) => {
+                return (
+                  <View key={index} style={{ margin: 10, marginTop: 30 }}>
+
+                    <View>
+                      <Text style={styles.videoText}>Trailer</Text>
+
+                      <WebView
+                        allowsFullscreenVideo
+                        mediaPlaybackRequiresUserAction
+                        style={styles.WebViewContainer}
+                        source={{ uri: `https://www.youtube.com/embed/${video[index].key}` }}
+                      />
+
+                    </View>
+
+                  </View>
+                )
+              })
+            }
+
           </View>
 
-        </View>
-      </ScrollView>
+        </ScrollView>
 
-
-    </View>
-  )
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  containerImages: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   containerMovie: {
-    margin: 5
+    margin: 5,
+    flex: 1,
+    flexDirection: 'row'
   },
   images: {
-    width: 380,
-    height: 180,
-    margin: 5,
+    width: 150,
+    height: 210,
+    margin: 2,
     justifyContent: "space-between"
   },
   text: {
-    margin: 5
+    margin: 0
   },
   title: {
     fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 20,
-    marginTop: 15
+    textAlign: "left",
+    fontSize: 25,
+    marginTop: 5,
+    marginLeft: 5
   },
   date: {
-    marginRight: 35,
+    marginLeft: 5,
+    marginTop: 2
   },
   videoText: {
     fontSize: 15,
@@ -139,11 +158,11 @@ const styles = StyleSheet.create({
   overview: {
     flexWrap: 'wrap',
     paddingTop: 7,
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   WebViewContainer: {
     marginTop: (Platform.OS == 'android') ? 20 : 0,
-    width: 380,
+    width: 395,
     height: 250
   }
 })
