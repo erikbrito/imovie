@@ -1,17 +1,18 @@
 # MOVIEFLIX
 
 <p float="left">
-<img src="https://user-images.githubusercontent.com/5699834/95501637-fec84880-097e-11eb-9391-75de1812fb56.jpg?" height="550" width="280">
-<img src="https://user-images.githubusercontent.com/5699834/99025805-75d99980-2548-11eb-9653-5e31ea5eaa69.jpg" height="550" width="280">
+  <img src="https://user-images.githubusercontent.com/5699834/100663284-d2a0c680-3334-11eb-9c4f-39355c9ddcff.jpg" height="550" width="280">
+  <img src="https://user-images.githubusercontent.com/5699834/100663358-ecdaa480-3334-11eb-9d8a-33a13361f96a.jpg" height="550" width="280">
+  <img src="https://user-images.githubusercontent.com/5699834/100663472-15fb3500-3335-11eb-908c-87d29cba91dc.jpg" height="550" width="280">
 </p
 
-### Status: In Progress
+### Status: Done
 
 ### Features
 
-- [x] Home: List Movies, Title and Summary (Branch update_part_2)
-- [x] More about film (Branch update_part_3)
-- [ ] Search Movies (Branch update_part_4)
+- [x] Home: List Movies, Title and Summary (Branch update_part_2) (without the contents of branch 3 and 4)
+- [x] More about film (Branch update_part_3) (without the contents of branch 4)
+- [x] Search Movies (Branch update_part_4) (complete project)
 
 ### Prerequisites
 Before you start, you will need to have installed and EXPO on the system and on your smartphone (https://docs.expo.io/get-started/installation/)
