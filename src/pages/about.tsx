@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, Platform } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
 import { Video, Information } from '../Redux/Info/types'
 import { WebView } from 'react-native-webview';
 import { Button, Card, TouchableRipple } from 'react-native-paper';
+import { useRoute } from '@react-navigation/native';
 
 interface Params {
   video: Video[],
@@ -23,6 +24,9 @@ type Props = Params & Infor
 
 const Info: React.FC<Props> = () => {
 
+  const route = useRoute()
+  const routeParams = route.params as Params
+
   const video = useSelector((state: AplicationState) => state.video.data)
   const information = useSelector((state: AplicationState) => state.video.information)
 
@@ -31,9 +35,10 @@ const Info: React.FC<Props> = () => {
     return gen.join(', ')
   }
 
-  if (Object.keys(information).length === 0) {
+  if ((routeParams.movie.id !== information.id)) {
     return (
       <View style={{ flex:1, justifyContent: "center",alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#6200ee" />
         <Text>Loading...</Text>
       </View>
     )
@@ -63,11 +68,9 @@ const Info: React.FC<Props> = () => {
                 </View>
 
                 <View style={{ flex: 1, justifyContent: "flex-end", margin: 8 }}>
-                  <TouchableRipple>
                     <Button icon='heart' mode='contained' style={{ position: "relative", bottom: 5 }}>
                       Favorite
                     </Button>
-                  </TouchableRipple>
                 </View>
 
               </Card>

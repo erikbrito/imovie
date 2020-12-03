@@ -48,17 +48,17 @@ const Home: React.FC<Props> = () => {
 
   const itemActions = (index: any) => {
     dispatch(fetchVideo(actions[index].id))
-    navigation.navigate('About')
+    navigation.navigate('About', {movie: actions[index]})
   }
 
   const itemAnimations = (index: any) => {
     dispatch(fetchVideo(animations[index].id))
-    navigation.navigate('About')
+    navigation.navigate('About', {movie: animations[index]})
   }
   
   const itemWar = (index: any) => {
     dispatch(fetchVideo(war[index].id))
-    navigation.navigate('About')
+    navigation.navigate('About', {movie: war[index]})
   }
 
   return (
