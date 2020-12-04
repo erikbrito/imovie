@@ -36,7 +36,7 @@ const Trending: React.FC = () => {
 
   const itemPressed = (index: any) => {
     dispatch(fetchVideo(movie[index].id))
-    navigation.navigate('About')
+    navigation.navigate('About', { movie: movie[index] })
   }
 
 const [searchQuery, setSearchQuery] = React.useState('');
