@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -48,104 +48,113 @@ const Home: React.FC<Props> = () => {
 
   const itemActions = (index: any) => {
     dispatch(fetchVideo(actions[index].id))
-    navigation.navigate('About', {movie: actions[index]})
+    navigation.navigate('About', { movie: actions[index] })
   }
 
   const itemAnimations = (index: any) => {
     dispatch(fetchVideo(animations[index].id))
-    navigation.navigate('About', {movie: animations[index]})
+    navigation.navigate('About', { movie: animations[index] })
   }
-  
+
   const itemWar = (index: any) => {
     dispatch(fetchVideo(war[index].id))
-    navigation.navigate('About', {movie: war[index]})
+    navigation.navigate('About', { movie: war[index] })
   }
 
-  return (
-    <View style={styles.container}>
+  if ((Object.keys(actions).length !== 20) && (Object.keys(animations).length !== 20) && (Object.keys(war).length !== 20)) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#6200ee" />
+        <Text>Loading...</Text>
+      </View>
+    )
+  } else {
+    return (
+      <View style={styles.container}>
 
-      <Searchbar
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-        onSubmitEditing={searchPress}
-        style={styles.searchbar}
-      />
+        <Searchbar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+          onSubmitEditing={searchPress}
+          style={styles.searchbar}
+        />
 
-      <ScrollView>
-        <Text style={styles.title}>Action:</Text>
+        <ScrollView>
+          <Text style={styles.title}>Action:</Text>
 
-        <View>
-          <ScrollView horizontal={true}>
+          <View>
+            <ScrollView horizontal={true}>
 
-            <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
-              {Object.keys(actions).map((index: any) => {
-                return (
-                  <TouchableHighlight onPress={() => itemActions(index)} underlayColor="lightgray" key={index}>
+              <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
+                {Object.keys(actions).map((index: any) => {
+                  return (
+                    <TouchableHighlight onPress={() => itemActions(index)} underlayColor="lightgray" key={index}>
 
-                    <View key={index}>
-                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
+                      <View key={index}>
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
 
-                    </View>
+                      </View>
 
-                  </TouchableHighlight>
-                )
-              })}
-            </View>
+                    </TouchableHighlight>
+                  )
+                })}
+              </View>
 
-          </ScrollView>
-        </View>
+            </ScrollView>
+          </View>
 
-        <Text style={styles.title}>Animation:</Text>
+          <Text style={styles.title}>Animation:</Text>
 
-        <View>
+          <View>
 
-          <ScrollView horizontal={true}>
-            <View style={{ flexDirection: 'row' }}>
-              {Object.keys(animations).map((index: any) => {
-                return (
-                  <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="lightgray" key={index}>
+            <ScrollView horizontal={true}>
+              <View style={{ flexDirection: 'row' }}>
+                {Object.keys(animations).map((index: any) => {
+                  return (
+                    <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="lightgray" key={index}>
 
-                    <View key={index}>
-                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
+                      <View key={index}>
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
 
-                    </View>
+                      </View>
 
-                  </TouchableHighlight>
-                )
-              })}
-            </View>
-          </ScrollView>
+                    </TouchableHighlight>
+                  )
+                })}
+              </View>
+            </ScrollView>
 
-        </View>
+          </View>
 
-        <Text style={styles.title}>War:</Text>
+          <Text style={styles.title}>War:</Text>
 
-        <View>
+          <View>
 
-          <ScrollView horizontal={true}>
-            <View style={{ flexDirection: 'row' }}>
-              {Object.keys(war).map((index: any) => {
-                return (
-                  <TouchableHighlight onPress={() => itemWar(index)} underlayColor="lightgray" key={index}>
+            <ScrollView horizontal={true}>
+              <View style={{ flexDirection: 'row' }}>
+                {Object.keys(war).map((index: any) => {
+                  return (
+                    <TouchableHighlight onPress={() => itemWar(index)} underlayColor="lightgray" key={index}>
 
-                    <View key={index}>
-                      <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
+                      <View key={index}>
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
 
-                    </View>
+                      </View>
 
-                  </TouchableHighlight>
-                )
-              })}
-            </View>
-          </ScrollView>
+                    </TouchableHighlight>
+                  )
+                })}
+              </View>
+            </ScrollView>
 
-        </View>
-      </ScrollView>
+          </View>
+        </ScrollView>
 
 
-    </View>
-  )
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -168,7 +177,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18,
-    margin: 5, 
+    margin: 5,
     marginLeft: 10,
     color: '#6200ee'
   },

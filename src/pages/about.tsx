@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator, Modal, Alert } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
 import { Video, Information } from '../Redux/Info/types'
@@ -23,6 +23,7 @@ interface Infor {
 type Props = Params & Infor
 
 const Info: React.FC<Props> = () => {
+  const [modalVisible, setModalVisible] = useState(false);
 
   const route = useRoute()
   const routeParams = route.params as Params
@@ -35,9 +36,9 @@ const Info: React.FC<Props> = () => {
     return gen.join(', ')
   }
 
-  if ((routeParams.movie.id !== information.id)) {
+  if (routeParams.movie.id !== information.id) {
     return (
-      <View style={{ flex:1, justifyContent: "center",alignItems: "center" }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#6200ee" />
         <Text>Loading...</Text>
       </View>
@@ -68,8 +69,22 @@ const Info: React.FC<Props> = () => {
                 </View>
 
                 <View style={{ flex: 1, justifyContent: "flex-end", margin: 8 }}>
-                    <Button icon='heart' mode='contained' style={{ position: "relative", bottom: 5 }}>
-                      Favorite
+                  <Modal
+                    animationType="none"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                      setModalVisible(false)
+                    }}
+                  >
+                    <View style={styles.centeredView}>
+                      <View style={styles.modalView}>
+                        <Text style={{ fontWeight: 'bold' }}>You clicked to favorite!!</Text>
+                      </View>
+                    </View>
+                  </Modal>
+                  <Button icon='heart' onPress={() => { setModalVisible(true) }} mode='contained' style={{ position: "relative", bottom: 5 }}>
+                    Favorite
                     </Button>
                 </View>
 
@@ -167,7 +182,27 @@ const styles = StyleSheet.create({
     marginTop: (Platform.OS == 'android') ? 20 : 0,
     width: 395,
     height: 250
-  }
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
 })
 
 export default Info
