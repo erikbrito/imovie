@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { fetchMovie } from '../Redux/Search/actions'
 import { Searchbar } from 'react-native-paper';
 
-const Trending: React.FC = () => {
+const fieldSearch: React.FC = () => {
   const navigation = useNavigation();
 
   const dispatch = useDispatch()
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Trending
+export default fieldSearch

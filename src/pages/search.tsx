@@ -16,7 +16,7 @@ interface Params {
   overview: string
 }
 
-const Trending: React.FC = () => {
+const search: React.FC = () => {
 
   const dispatch = useDispatch()
 
@@ -94,4 +94,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Trending
+export default search
