@@ -1,9 +1,9 @@
 # MOVIEFLIX
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/5699834/100663284-d2a0c680-3334-11eb-9c4f-39355c9ddcff.jpg" height="520" width="260">
-  <img src="https://user-images.githubusercontent.com/5699834/100663358-ecdaa480-3334-11eb-9d8a-33a13361f96a.jpg" height="520" width="260">
-  <img src="https://user-images.githubusercontent.com/5699834/100663472-15fb3500-3335-11eb-908c-87d29cba91dc.jpg" height="520" width="260">
+  <img src="https://user-images.githubusercontent.com/5699834/101828951-063bd780-3b11-11eb-852a-9c0d8eb424f7.png" height="520" width="260">
+  <img src="https://user-images.githubusercontent.com/5699834/101829020-22d80f80-3b11-11eb-83ff-4a97c4976924.png" height="520" width="260">
+  <img src="https://user-images.githubusercontent.com/5699834/101829104-3f744780-3b11-11eb-9691-00f90c5b2d9c.png" height="520" width="260">
 </p>
 
 ### Status: Done
