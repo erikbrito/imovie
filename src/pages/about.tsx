@@ -39,8 +39,8 @@ const Info: React.FC<Props> = () => {
   if (routeParams.movie.id !== information.id) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color="#6200ee" />
-        <Text>Loading...</Text>
+        <ActivityIndicator size="large" color="#fff" />
+        <Text style={{ fontWeight: 'bold', fontSize: 18, margin: 5, color: '#fff'}}>Loading...</Text>
       </View>
     )
   } else {
@@ -54,16 +54,16 @@ const Info: React.FC<Props> = () => {
             <View style={styles.containerMovie}>
               <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${information.poster_path}` }} style={styles.images} />
 
-              <Card style={{ flex: 1, margin: 1 }}>
-                <View style={styles.text}>
+              <Card style={{ flex: 1, margin: 1, backgroundColor: '#4b4771' }}>
+                <View style={styles.containerInfo}>
 
                   <Text numberOfLines={4} style={styles.title}>{information.title}</Text>
 
                   <Text style={styles.date}>{information.release_date.slice(0, 4)}</Text>
 
                   <View style={{ flexDirection: 'row', justifyContent: "flex-start", marginLeft: 5, marginTop: 5 }}>
-                    <Text style={{ fontWeight: 'normal' }}>Votes: </Text>
-                    <Text style={{ fontWeight: 'normal' }}> {information.vote_average}/10</Text>
+                    <Text style={styles.text}>Votes: </Text>
+                    <Text style={styles.text}> {information.vote_average}/10</Text>
                   </View>
 
                 </View>
@@ -93,15 +93,15 @@ const Info: React.FC<Props> = () => {
             </View>
 
             <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 15 }}>
-              <Text style={{ fontWeight: 'bold' }}>Genres: </Text>
+              <Text style={{ fontWeight: 'bold', color: '#fff' }}>Genres: </Text>
 
-              <Text numberOfLines={2}>{genero()}</Text>
+              <Text numberOfLines={2} style={styles.text}>{genero()}</Text>
             </View>
 
             <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 5 }}>
-              <Text style={{ fontWeight: 'bold' }}>Runtime:</Text>
+              <Text style={{ fontWeight: 'bold', color: '#fff' }}>Runtime:</Text>
 
-              <Text> {information.runtime} minutes</Text>
+              <Text style={styles.text}> {information.runtime} minutes</Text>
             </View>
 
             <View style={{ flexDirection: 'column', margin: 10 }}>
@@ -155,28 +155,36 @@ const styles = StyleSheet.create({
     margin: 2,
     justifyContent: "space-between"
   },
-  text: {
+  containerInfo: {
     margin: 0
+  },
+  text: {
+    fontWeight: 'normal',
+    color: '#fff'
   },
   title: {
     fontWeight: 'bold',
     textAlign: "left",
     fontSize: 25,
     marginTop: 5,
-    marginLeft: 5
+    marginLeft: 5,
+    color: '#fff'
   },
   date: {
     marginLeft: 5,
-    marginTop: 2
+    marginTop: 2,
+    color: '#fff'
   },
   videoText: {
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#fff'
   },
   overview: {
     flexWrap: 'wrap',
     paddingTop: 7,
     flexDirection: 'row',
+    color: '#fff'
   },
   WebViewContainer: {
     marginTop: (Platform.OS == 'android') ? 20 : 0,

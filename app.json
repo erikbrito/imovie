@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "front",
+    "name": "Movieflix",
     "slug": "front",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,10 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zapps.movieflix"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.zapps.movieflix",
+      "versionCode": 1,
+      "enableDangerousExperimentalLeanBuilds" : false
     }
   }
 }

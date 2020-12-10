@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import { useRoute } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
-import { fetchMovie } from '../Redux/Search/actions'
 import { fetchVideo } from '../Redux/Info/actions'
 import { Movie } from '../Redux/Search/types'
-import { Searchbar } from 'react-native-paper';
+import FieldSearch from './fieldSearch'
 
 interface Params {
   movie: Movie[],
@@ -19,16 +17,8 @@ interface Params {
 }
 
 const Trending: React.FC = () => {
-  const route = useRoute()
-  const routeParams = route.params as Params
-
-  const queryMovie = routeParams.movie
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchMovie(queryMovie))
-  }, []);
 
   const movie = useSelector((state: AplicationState) => state.movie.data)
 
@@ -39,60 +29,43 @@ const Trending: React.FC = () => {
     navigation.navigate('About', { movie: movie[index] })
   }
 
-const [searchQuery, setSearchQuery] = React.useState('');
+  return (
+    <View style={styles.container}>
 
-const onChangeSearch = (query: any) => setSearchQuery(query);
+      <FieldSearch />
 
-const searchPress = () => {
-  dispatch(fetchMovie(searchQuery))
-}
+      <ScrollView>
+        <View style={styles.containerImages}>
 
-return (
-  <View style={styles.container}>
+          <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
+            {Object.keys(movie).map((index: any) => {
+              return (
+                <TouchableHighlight onPress={() => itemPressed(index)} underlayColor="#433f64" key={index}>
 
-    <Searchbar
-      placeholder="Search"
-      onChangeText={onChangeSearch}
-      value={searchQuery}
-      onSubmitEditing={searchPress}
-      style={styles.searchbar}
-    />
+                  <View key={index} style={styles.containerMovie}>
+                    <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${movie[index].poster_path}` }} style={styles.images} />
 
-    <ScrollView>
-      <View style={styles.containerImages}>
+                    <View style={{ marginRight: 260 }}>
+                      <Text style={styles.title}>{movie[index].title}</Text>
+                      <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{movie[index].overview}</Text>
+                    </View>
 
-        <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
-          {Object.keys(movie).map((index: any) => {
-            return (
-              <TouchableHighlight onPress={() => itemPressed(index)} underlayColor="lightgray" key={index}>
-
-                <View key={index} style={styles.containerMovie}>
-                  <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${movie[index].poster_path}` }} style={styles.images} />
-
-                  <View style={{ marginRight: 260 }}>
-                    <Text style={styles.title}>{movie[index].title}</Text>
-                    <Text numberOfLines={6} ellipsizeMode="tail" style={styles.overview}>{movie[index].overview}</Text>
                   </View>
 
-                </View>
+                </TouchableHighlight>
+              )
+            })}
+          </View>
 
-              </TouchableHighlight>
-            )
-          })}
         </View>
-
-      </View>
-    </ScrollView>
-  </View>
-)
+      </ScrollView>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  searchbar: {
-    margin: 4,
   },
   containerImages: {
     display: "flex",
@@ -111,11 +84,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   title: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#fff'
   },
   overview: {
     flexWrap: 'wrap',
     paddingTop: 7,
+    color: '#fff'
   },
 })
 

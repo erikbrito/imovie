@@ -7,7 +7,7 @@ import { Actions, Animations, War } from '../Redux/Home/types'
 import { AplicationState } from '../Redux/store'
 import { loadRequest } from '../Redux/Home/actions'
 import { fetchVideo } from '../Redux/Info/actions'
-import { Searchbar } from 'react-native-paper';
+import FieldSearch from './fieldSearch'
 
 interface StateProps {
   actions: Actions[];
@@ -28,15 +28,6 @@ const Home: React.FC<Props> = () => {
     loadRequest()
   }, []);
 
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  const searchPress = () => {
-    navigation.navigate('Search',
-      { movie: searchQuery }
-    )
-  }
-
-  const onChangeSearch = (query: any) => setSearchQuery(query);
 
   const actions = useSelector((state: AplicationState) => state.films.actions)
   const animations = useSelector((state: AplicationState) => state.films.animations)
@@ -64,32 +55,24 @@ const Home: React.FC<Props> = () => {
   if ((Object.keys(actions).length !== 20) && (Object.keys(animations).length !== 20) && (Object.keys(war).length !== 20)) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color="#6200ee" />
-        <Text>Loading...</Text>
+        <ActivityIndicator size="large" color="#fff" />
+        <Text style={styles.title}>Loading...</Text>
       </View>
     )
   } else {
     return (
       <View style={styles.container}>
 
-        <Searchbar
-          placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-          onSubmitEditing={searchPress}
-          style={styles.searchbar}
-        />
-
-        <ScrollView>
+          <FieldSearch />
           <Text style={styles.title}>Action:</Text>
 
           <View>
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
               <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
                 {Object.keys(actions).map((index: any) => {
                   return (
-                    <TouchableHighlight onPress={() => itemActions(index)} underlayColor="lightgray" key={index}>
+                    <TouchableHighlight onPress={() => itemActions(index)} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
@@ -108,11 +91,12 @@ const Home: React.FC<Props> = () => {
 
           <View>
 
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(animations).map((index: any) => {
                   return (
-                    <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="lightgray" key={index}>
+                    <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
@@ -131,11 +115,12 @@ const Home: React.FC<Props> = () => {
 
           <View>
 
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(war).map((index: any) => {
                   return (
-                    <TouchableHighlight onPress={() => itemWar(index)} underlayColor="lightgray" key={index}>
+                    <TouchableHighlight onPress={() => itemWar(index)} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
@@ -149,8 +134,6 @@ const Home: React.FC<Props> = () => {
             </ScrollView>
 
           </View>
-        </ScrollView>
-
 
       </View>
     )
@@ -160,9 +143,6 @@ const Home: React.FC<Props> = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  searchbar: {
-    margin: 4,
   },
   containerMovie: {
     margin: 5,
@@ -177,9 +157,9 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 18,
-    margin: 5,
+    marginTop: 5,
     marginLeft: 10,
-    color: '#6200ee'
+    color: '#fff'
   },
   overview: {
     flexWrap: 'wrap',
