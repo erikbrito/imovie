@@ -1,7 +1,8 @@
 # MOVIEFLIX
 
-![movieflix-1](https://github.com/erikbrito/movieflix/assets/5699834/462073bd-f962-4625-8499-db0d56c9c1e8)
-![movieflix-2](https://github.com/erikbrito/movieflix/assets/5699834/86670ec5-3b82-4b3d-8b3d-448f8f9ace93)
+![movieflix-1](https://github.com/erikbrito/movieflix/assets/5699834/a78ac6a3-4900-43a7-8f6b-73c5010c8f92)
+![movieflix-2](https://github.com/erikbrito/movieflix/assets/5699834/b5b687a3-5119-47bc-9b49-8a8f67b7c926)
+
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/5699834/101828951-063bd780-3b11-11eb-852a-9c0d8eb424f7.png" height="520" width="260">
