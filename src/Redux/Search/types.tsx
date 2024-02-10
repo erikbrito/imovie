@@ -20,7 +20,7 @@ export interface Movie {
 /**
  * State types
  */
- export interface MovieState {
+export interface MovieState {
    readonly data: Movie[]
    readonly fetch: boolean
    readonly error: boolean

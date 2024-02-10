@@ -1,5 +1,9 @@
 # MOVIEFLIX
 
+![movieflix-1](https://github.com/erikbrito/movieflix/assets/5699834/a78ac6a3-4900-43a7-8f6b-73c5010c8f92)
+![movieflix-2](https://github.com/erikbrito/movieflix/assets/5699834/b5b687a3-5119-47bc-9b49-8a8f67b7c926)
+
+
 <p float="left">
   <img src="https://user-images.githubusercontent.com/5699834/101828951-063bd780-3b11-11eb-852a-9c0d8eb424f7.png" height="520" width="260">
   <img src="https://user-images.githubusercontent.com/5699834/101829020-22d80f80-3b11-11eb-83ff-4a97c4976924.png" height="520" width="260">
@@ -28,7 +32,7 @@ $ npm install
 # Run the application
 $ npm start
 or
-$ expo start
+$ expo start or npx expo start
 
 $ Open the Expo app and access via QR Code or run your cell phone emulator via Android Studio by entering the local address that is running the app
 

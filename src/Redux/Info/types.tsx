@@ -17,17 +17,22 @@ export interface Video {
 }
 export interface Information {
   id: number
+  poster_path: string
   overview: string
   title: string
   name: string
+  release_date: string
+  vote_average: number
+  runtime: number
+  genres: Array<{ id: number, name: string }>
 }
 
 /**
  * State types
  */
- export interface VideoState {
+export interface VideoState {
    readonly data: Video[]
-   readonly information: Information | any
+   readonly information: Information | never
    readonly fetch: boolean
    readonly error: boolean
  }

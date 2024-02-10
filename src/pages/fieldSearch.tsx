@@ -3,16 +3,17 @@ import {StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
 import { fetchMovie } from '../Redux/Search/actions'
-import { Searchbar } from 'react-native-paper';
+import { Searchbar } from 'react-native-paper'
 
-const Trending: React.FC = () => {
-  const navigation = useNavigation();
+const fieldSearch: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navigation = useNavigation<any>()
 
   const dispatch = useDispatch()
 
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = React.useState('')
 
-  const onChangeSearch = (query: any) => setSearchQuery(query);
+  const onChangeSearch = (query: string) => setSearchQuery(query)
 
   const searchPress = () => {
     dispatch(fetchMovie(searchQuery))
@@ -37,4 +38,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Trending
+export default fieldSearch

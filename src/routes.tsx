@@ -1,13 +1,13 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import { Provider } from 'react-redux';
-import store from './Redux/store';
+import { Provider } from 'react-redux'
+import store from './Redux/store'
 
-import Home from './pages/home';
-import Search from './pages/search';
-import About from './pages/about';
+import Home from './pages/home'
+import Search from './pages/search'
+import About from './pages/about'
 
 const AppStack = createStackNavigator()
 
@@ -15,7 +15,7 @@ const Routes = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <AppStack.Navigator headerMode="screen"
+        <AppStack.Navigator
           screenOptions={{
             headerStyle: {
               backgroundColor: '#34314f',
