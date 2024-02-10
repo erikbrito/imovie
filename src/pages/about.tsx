@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator, Modal, Alert } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator, Modal } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
 import { Video, Information } from '../Redux/Info/types'
-import { WebView } from 'react-native-webview';
-import { Button, Card, TouchableRipple } from 'react-native-paper';
-import { useRoute } from '@react-navigation/native';
+import { WebView } from 'react-native-webview'
+import { Button, Card } from 'react-native-paper'
+import { useRoute } from '@react-navigation/native'
 
 interface Params {
-  video: Video[],
-  id: number,
-  movie: any,
-  title: string,
-  backdrop_path: string,
+  video: Video[]
+  id: number
+  movie: {id: number}
+  title: string
+  backdrop_path: string
   overview: string
 }
 
@@ -23,20 +23,21 @@ interface Infor {
 type Props = Params & Infor
 
 const Info: React.FC<Props> = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false)
 
   const route = useRoute()
   const routeParams = route.params as Params
 
   const video = useSelector((state: AplicationState) => state.video.data)
   const information = useSelector((state: AplicationState) => state.video.information)
+  const { id, genres, poster_path, title, release_date, vote_average, runtime, overview } = information
 
   const genero = () => {
-    const gen = information.genres.map((genres: any) => genres.name)
+    const gen = genres.map((genres: { name: string }) => genres.name)
     return gen.join(', ')
   }
 
-  if (routeParams.movie.id !== information.id) {
+  if (routeParams.movie.id !== id) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#fff" />
@@ -52,18 +53,18 @@ const Info: React.FC<Props> = () => {
           <View style={{ flex: 1 }}>
 
             <View style={styles.containerMovie}>
-              <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${information.poster_path}` }} style={styles.images} />
+              <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }} style={styles.images} />
 
               <Card style={{ flex: 1, margin: 1, backgroundColor: '#4b4771' }}>
                 <View style={styles.containerInfo}>
 
-                  <Text numberOfLines={4} style={styles.title}>{information.title}</Text>
+                  <Text numberOfLines={4} style={styles.title}>{title}</Text>
 
-                  <Text style={styles.date}>{information.release_date.slice(0, 4)}</Text>
+                  <Text style={styles.date}>{release_date.slice(0, 4)}</Text>
 
                   <View style={{ flexDirection: 'row', justifyContent: "flex-start", marginLeft: 5, marginTop: 5 }}>
                     <Text style={styles.text}>Votes: </Text>
-                    <Text style={styles.text}> {information.vote_average}/10</Text>
+                    <Text style={styles.text}> {vote_average.toString().slice(0, 3)}/10</Text>
                   </View>
 
                 </View>
@@ -85,7 +86,7 @@ const Info: React.FC<Props> = () => {
                   </Modal>
                   <Button icon='heart' onPress={() => { setModalVisible(true) }} mode='contained' style={{ position: "relative", bottom: 5 }}>
                     Favorite
-                    </Button>
+                  </Button>
                 </View>
 
               </Card>
@@ -101,16 +102,16 @@ const Info: React.FC<Props> = () => {
             <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 5 }}>
               <Text style={{ fontWeight: 'bold', color: '#fff' }}>Runtime:</Text>
 
-              <Text style={styles.text}> {information.runtime} minutes</Text>
+              <Text style={styles.text}> {runtime} minutes</Text>
             </View>
 
             <View style={{ flexDirection: 'column', margin: 10 }}>
-              <Text numberOfLines={10} ellipsizeMode="tail" style={styles.overview}>{information.overview}</Text>
+              <Text numberOfLines={10} ellipsizeMode="tail" style={styles.overview}>{overview}</Text>
             </View>
 
 
             {
-              Object.keys(video).slice(0, 1).map((index: any) => {
+              Object.keys(video).slice(0, 1).map((index: string) => {
                 return (
                   <View key={index} style={{ margin: 10, marginTop: 30 }}>
 

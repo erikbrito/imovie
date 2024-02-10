@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,11 +10,11 @@ import { fetchVideo } from '../Redux/Info/actions'
 import FieldSearch from './fieldSearch'
 
 interface StateProps {
-  actions: Actions[];
-  animations: Animations[];
-  war: War[];
-  poster_path: string;
-  overview: string;
+  actions: Actions[]
+  animations: Animations[]
+  war: War[]
+  poster_path: string
+  overview: string
 }
 
 interface DispatchProps {
@@ -26,28 +26,28 @@ type Props = StateProps & DispatchProps
 const Home: React.FC<Props> = () => {
   useEffect(() => {
     loadRequest()
-  }, []);
-
+  }, [])
 
   const actions = useSelector((state: AplicationState) => state.films.actions)
   const animations = useSelector((state: AplicationState) => state.films.animations)
   const war = useSelector((state: AplicationState) => state.films.war)
 
-  const navigation = useNavigation();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navigation = useNavigation<any>()
 
   const dispatch = useDispatch()
 
-  const itemActions = (index: any) => {
+  const itemActions = (index: number) => {
     dispatch(fetchVideo(actions[index].id))
     navigation.navigate('About', { movie: actions[index] })
   }
 
-  const itemAnimations = (index: any) => {
+  const itemAnimations = (index: number) => {
     dispatch(fetchVideo(animations[index].id))
     navigation.navigate('About', { movie: animations[index] })
   }
 
-  const itemWar = (index: any) => {
+  const itemWar = (index: number) => {
     dispatch(fetchVideo(war[index].id))
     navigation.navigate('About', { movie: war[index] })
   }
@@ -63,16 +63,19 @@ const Home: React.FC<Props> = () => {
     return (
       <View style={styles.container}>
 
-          <FieldSearch />
+        <FieldSearch />
+
+        <ScrollView>
+          
           <Text style={styles.title}>Action:</Text>
 
           <View>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
               <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
-                {Object.keys(actions).map((index: any) => {
+                {Object.keys(actions).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemActions(index)} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight onPress={() => itemActions(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
@@ -94,9 +97,9 @@ const Home: React.FC<Props> = () => {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
               <View style={{ flexDirection: 'row' }}>
-                {Object.keys(animations).map((index: any) => {
+                {Object.keys(animations).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemAnimations(index)} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight onPress={() => itemAnimations(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
@@ -118,9 +121,9 @@ const Home: React.FC<Props> = () => {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
               <View style={{ flexDirection: 'row' }}>
-                {Object.keys(war).map((index: any) => {
+                {Object.keys(war).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemWar(index)} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight onPress={() => itemWar(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
@@ -134,6 +137,8 @@ const Home: React.FC<Props> = () => {
             </ScrollView>
 
           </View>
+
+        </ScrollView>
 
       </View>
     )

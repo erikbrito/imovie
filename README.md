@@ -32,7 +32,7 @@ $ npm install
 # Run the application
 $ npm start
 or
-$ expo start
+$ expo start or npx expo start
 
 $ Open the Expo app and access via QR Code or run your cell phone emulator via Android Studio by entering the local address that is running the app
 

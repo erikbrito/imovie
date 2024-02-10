@@ -9,22 +9,23 @@ import { Movie } from '../Redux/Search/types'
 import FieldSearch from './fieldSearch'
 
 interface Params {
-  movie: Movie[],
-  id: number,
-  title: string,
-  backdrop_path: string,
-  overview: string
+  movie: Movie[]
 }
 
+<<<<<<< HEAD
 const search: React.FC = () => {
+=======
+const Search: React.FC<Params> = () => {
+>>>>>>> update_part_4
 
   const dispatch = useDispatch()
 
   const movie = useSelector((state: AplicationState) => state.movie.data)
 
-  const navigation = useNavigation();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const navigation = useNavigation<any>()
 
-  const itemPressed = (index: any) => {
+  const itemPressed = (index: string) => {
     dispatch(fetchVideo(movie[index].id))
     navigation.navigate('About', { movie: movie[index] })
   }
@@ -38,7 +39,7 @@ const search: React.FC = () => {
         <View style={styles.containerImages}>
 
           <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
-            {Object.keys(movie).map((index: any) => {
+            {Object.keys(movie).map((index: string) => {
               return (
                 <TouchableHighlight onPress={() => itemPressed(index)} underlayColor="#433f64" key={index}>
 
@@ -94,4 +95,8 @@ const styles = StyleSheet.create({
   },
 })
 
+<<<<<<< HEAD
 export default search
+=======
+export default Search
+>>>>>>> update_part_4

@@ -26,7 +26,7 @@ export interface War {
 /**
  * State types
  */
- export interface FilmsState {
+export interface FilmsState {
    readonly actions: Actions[]
    readonly animations: Animations[]
    readonly war: War[]
