@@ -12,11 +12,7 @@ interface Params {
   movie: Movie[]
 }
 
-<<<<<<< HEAD
-const search: React.FC = () => {
-=======
 const Search: React.FC<Params> = () => {
->>>>>>> update_part_4
 
   const dispatch = useDispatch()
 
@@ -95,8 +91,4 @@ const styles = StyleSheet.create({
   },
 })
 
-<<<<<<< HEAD
-export default search
-=======
 export default Search
->>>>>>> update_part_4

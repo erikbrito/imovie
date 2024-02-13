@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "movieflix",
-    "slug": "movieflix",
+    "name": "films_and_series_search",
+    "slug": "films_and_series_search",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

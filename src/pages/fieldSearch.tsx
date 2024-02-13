@@ -6,12 +6,8 @@ import { fetchMovie } from '../Redux/Search/actions'
 import { Searchbar } from 'react-native-paper'
 
 const fieldSearch: React.FC = () => {
-<<<<<<< HEAD
-  const navigation = useNavigation();
-=======
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navigation = useNavigation<any>()
->>>>>>> update_part_4
 
   const dispatch = useDispatch()
 
