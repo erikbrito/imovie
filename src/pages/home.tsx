@@ -3,16 +3,17 @@ import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, } from 'r
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { Actions, Animations, War } from '../Redux/Home/types'
+import { Genres } from '../Redux/Home/types'
 import { AplicationState } from '../Redux/store'
 import { loadRequest } from '../Redux/Home/actions'
 import { fetchVideo } from '../Redux/Info/actions'
 import FieldSearch from './fieldSearch'
 
 interface StateProps {
-  actions: Actions[]
-  animations: Animations[]
-  war: War[]
+  actions: Genres[]
+  adventure: Genres[]
+  animations: Genres[]
+  war: Genres[]
   poster_path: string
   overview: string
 }
@@ -29,6 +30,7 @@ const Home: React.FC<Props> = () => {
   }, [])
 
   const actions = useSelector((state: AplicationState) => state.films.actions)
+  const adventure = useSelector((state: AplicationState) => state.films.adventure)
   const animations = useSelector((state: AplicationState) => state.films.animations)
   const war = useSelector((state: AplicationState) => state.films.war)
 
@@ -40,6 +42,11 @@ const Home: React.FC<Props> = () => {
   const itemActions = (index: number) => {
     dispatch(fetchVideo(actions[index].id))
     navigation.navigate('About', { movie: actions[index] })
+  }
+  
+  const itemAdventure = (index: number) => {
+    dispatch(fetchVideo(adventure[index].id))
+    navigation.navigate('About', { movie: adventure[index] })
   }
 
   const itemAnimations = (index: number) => {
@@ -78,7 +85,31 @@ const Home: React.FC<Props> = () => {
                     <TouchableHighlight onPress={() => itemActions(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
-                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${actions[index].poster_path}` }} style={styles.images} />
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500${actions[index].poster_path}` }} style={styles.images} />
+
+                      </View>
+
+                    </TouchableHighlight>
+                  )
+                })}
+              </View>
+
+            </ScrollView>
+          </View>
+          
+          <Text style={styles.title}>Adventure:</Text>
+
+          <View>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+
+              <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
+                {Object.keys(adventure).map((index: string) => {
+
+                  return (
+                    <TouchableHighlight onPress={() => itemAdventure(parseInt(index))} underlayColor="#433f64" key={index}>
+
+                      <View key={index}>
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500${adventure[index].poster_path}` }} style={styles.images} />
 
                       </View>
 
@@ -102,7 +133,7 @@ const Home: React.FC<Props> = () => {
                     <TouchableHighlight onPress={() => itemAnimations(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
-                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${animations[index].poster_path}` }} style={styles.images} />
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500${animations[index].poster_path}` }} style={styles.images} />
 
                       </View>
 
@@ -126,7 +157,7 @@ const Home: React.FC<Props> = () => {
                     <TouchableHighlight onPress={() => itemWar(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
-                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${war[index].poster_path}` }} style={styles.images} />
+                        <Image source={{ uri: `https://image.tmdb.org/t/p/w500${war[index].poster_path}` }} style={styles.images} />
 
                       </View>
 

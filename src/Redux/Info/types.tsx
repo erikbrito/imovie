@@ -15,9 +15,10 @@ export interface Video {
   key: number
   name: string
 }
-export interface Information {
+export interface Details {
   id: number
   poster_path: string
+  backdrop_path: string
   overview: string
   title: string
   name: string
@@ -32,7 +33,7 @@ export interface Information {
  */
 export interface VideoState {
    readonly data: Video[]
-   readonly information: Information | never
+   readonly details: Details | never
    readonly fetch: boolean
    readonly error: boolean
  }

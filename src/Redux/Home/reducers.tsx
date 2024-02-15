@@ -3,7 +3,7 @@ import { FilmsState, FilmsTypes } from './types'
 
 type Action = {
   type: string
-  payload: {actions: string[], animations: string[], war: string[]}
+  payload: {actions: string[], adventure: string[], animations: string[], war: string[]}
 }
 
 const INITIAL_STATE: FilmsState = {
@@ -11,7 +11,8 @@ const INITIAL_STATE: FilmsState = {
   animations: [],
   war: [],
   error: false,
-  loading: false
+  loading: false,
+  adventure: []
 }
 
 const reducer: Reducer = (state = INITIAL_STATE, action: Action) => {
@@ -19,7 +20,7 @@ const reducer: Reducer = (state = INITIAL_STATE, action: Action) => {
   case FilmsTypes.LOAD_REQUEST:
     return { ...state, loading: true }
   case FilmsTypes.LOAD_SUCCESS:
-    return { ...state, loading: false, error: false, actions: action.payload.actions, animations: action.payload.animations, war: action.payload.war }
+    return { ...state, loading: false, error: false, actions: action.payload.actions, adventure: action.payload.adventure, animations: action.payload.animations, war: action.payload.war }
   case FilmsTypes.LOAD_FAILURE:
     return { ...state, loading: false, error: true, actions: [], animations: [], war: [] }
   default:

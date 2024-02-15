@@ -11,13 +11,13 @@ export default function* watchRequestInfo() {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function* detailsVideo(action: any) {
   try {
-    const id = action.payload
+    const movie_id = action.payload
     
-    if (id !== undefined) {
-      const response = yield call(api.get, `/movie/${id}/videos?api_key=${API_KEY}`)
-      const information = yield call(api.get, `/movie/${id}?api_key=${API_KEY}`)
+    if (movie_id !== undefined) {
+      const response = yield call(api.get, `/movie/${movie_id}/videos?api_key=${API_KEY}`)
+      const details = yield call(api.get, `/movie/${movie_id}?api_key=${API_KEY}`)
       
-      yield put(getSuccess(response.data.results, information.data))
+      yield put(getSuccess(response.data.results, details.data))
     }
     
   } catch (error) {

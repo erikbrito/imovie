@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator, Modal } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '../Redux/store'
-import { Video, Information } from '../Redux/Info/types'
+import { Video, Details } from '../Redux/Info/types'
 import { WebView } from 'react-native-webview'
-import { Button, Card } from 'react-native-paper'
+import { Button, Card, Portal, Dialog } from 'react-native-paper'
 import { useRoute } from '@react-navigation/native'
 
 interface Params {
@@ -12,12 +12,11 @@ interface Params {
   id: number
   movie: {id: number}
   title: string
-  backdrop_path: string
   overview: string
 }
 
 interface Infor {
-  information: Information,
+  details: Details,
 }
 
 type Props = Params & Infor
@@ -29,8 +28,8 @@ const Info: React.FC<Props> = () => {
   const routeParams = route.params as Params
 
   const video = useSelector((state: AplicationState) => state.video.data)
-  const information = useSelector((state: AplicationState) => state.video.information)
-  const { id, genres, poster_path, title, release_date, vote_average, runtime, overview } = information
+  const details = useSelector((state: AplicationState) => state.video.details)
+  const { id, genres, poster_path, title, release_date, vote_average, runtime, overview } = details
 
   const genero = () => {
     const gen = genres.map((genres: { name: string }) => genres.name)
@@ -70,21 +69,7 @@ const Info: React.FC<Props> = () => {
                 </View>
 
                 <View style={{ flex: 1, justifyContent: "flex-end", margin: 8 }}>
-                  <Modal
-                    animationType="none"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {
-                      setModalVisible(false)
-                    }}
-                  >
-                    <View style={styles.centeredView}>
-                      <View style={styles.modalView}>
-                        <Text style={{ fontWeight: 'bold' }}>You clicked to favorite!!</Text>
-                      </View>
-                    </View>
-                  </Modal>
-                  <Button icon='heart' onPress={() => { setModalVisible(true) }} mode='contained' style={{ position: "relative", bottom: 5 }}>
+                  <Button icon='heart' onPress={() => { setModalVisible(!modalVisible) }} mode='elevated' style={{ position: "relative", bottom: 5 }}>
                     Favorite
                   </Button>
                 </View>
@@ -92,6 +77,17 @@ const Info: React.FC<Props> = () => {
               </Card>
 
             </View>
+
+            <Portal>
+              <Dialog style={{ backgroundColor: '#fff' }} visible={modalVisible} onDismiss={ () => {setModalVisible(!modalVisible)} }>
+                <Dialog.Icon icon="alert" />
+                <Dialog.Title style={{ textAlign: 'center' }}>You clicked to favorite!!</Dialog.Title>
+                <Dialog.Content>
+                  <Button onPress={ () => {setModalVisible(!modalVisible)} }>Exit</Button>
+                </Dialog.Content>
+              </Dialog>
+            </Portal>
+
 
             <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'flex-start', marginLeft: 10, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold', color: '#fff' }}>Genres: </Text>

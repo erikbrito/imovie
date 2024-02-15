@@ -5,7 +5,7 @@ type Action = {
   type: string
   payload: {
     data: [],
-    information: {
+    details: {
       id: 0,
       overview: '',
       title: '',
@@ -18,7 +18,7 @@ type Action = {
 
 const INITIAL_STATE: VideoState = {
   data: [],
-  information: {
+  details: {
     id: 0,
     overview: '',
     title: '',
@@ -27,7 +27,8 @@ const INITIAL_STATE: VideoState = {
     poster_path: '',
     release_date: '',
     vote_average: 0,
-    runtime: 0
+    runtime: 0,
+    backdrop_path: ''
   },
   error: false,
   fetch: false
@@ -36,9 +37,9 @@ const INITIAL_STATE: VideoState = {
 const reducer: Reducer = (state = INITIAL_STATE, action: Action) => {
   switch (action.type) {
   case VideoTypes.GET_SUCCESS:
-    return { ...state,  error: false, data: action.payload.data, information: action.payload.information }
+    return { ...state,  error: false, data: action.payload.data, details: action.payload.details }
   case VideoTypes.GET_FAILURE:
-    return { ...state, error: true, data: [], information: {} }
+    return { ...state, error: true, data: [], details: {} }
   default:
     return state
   }
