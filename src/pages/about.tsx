@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
 import { useSelector } from 'react-redux'
-import { AplicationState } from '../Redux/store'
-import { Video, Details } from '../Redux/Info/types'
+import { AplicationState } from '@redux/store'
+import { Video, Details } from '@redux/Info/types'
 import { WebView } from 'react-native-webview'
 import { Button, Card, Portal, Dialog } from 'react-native-paper'
 import { useRoute } from '@react-navigation/native'
@@ -107,24 +107,26 @@ const Info: React.FC<Props> = () => {
 
 
             {
-              Object.keys(video).slice(0, 1).map((index: string) => {
-                return (
-                  <View key={index} style={{ margin: 10, marginTop: 30 }}>
-
-                    <View>
-                      <Text style={styles.videoText}>Trailer</Text>
-
-                      <WebView
-                        allowsFullscreenVideo
-                        mediaPlaybackRequiresUserAction
-                        style={styles.WebViewContainer}
-                        source={{ uri: `https://www.youtube.com/embed/${video[index].key}` }}
-                      />
-
+              Object.keys(video).map((index: string) => {
+                if (video[index].name.includes('Official Trailer')) {
+                  return (
+                    <View key={index} style={{ margin: 10, marginTop: 30 }}>
+  
+                      <View>
+                        <Text style={styles.videoText}>Trailer</Text>
+  
+                        <WebView
+                          allowsFullscreenVideo
+                          mediaPlaybackRequiresUserAction
+                          style={styles.WebViewContainer}
+                          source={{ uri: `https://www.youtube.com/embed/${video[index].key}` }}
+                        />
+  
+                      </View>
+  
                     </View>
-
-                  </View>
-                )
+                  )
+                }
               })
             }
 

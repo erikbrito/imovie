@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { AplicationState } from '../Redux/store'
-import { fetchVideo } from '../Redux/Info/actions'
-import { Movie } from '../Redux/Search/types'
+import { AplicationState } from '@redux/store'
+import { fetchVideo } from '@redux/Info/actions'
+import { Movie } from '@redux/search/types'
 import FieldSearch from './fieldSearch'
 
 interface Params {

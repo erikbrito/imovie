@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { PaperProvider } from 'react-native-paper'
 
 import { Provider } from 'react-redux'
-import store from './Redux/store'
+import store from './redux/store'
 
 import Home from './pages/home'
 import Search from './pages/search'

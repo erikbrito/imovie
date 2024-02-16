@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, } from 'r
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { Genres } from '../Redux/Home/types'
-import { AplicationState } from '../Redux/store'
-import { loadRequest } from '../Redux/Home/actions'
-import { fetchVideo } from '../Redux/Info/actions'
+import { Genres } from '@redux/home/types'
+import { AplicationState } from '@redux/store'
+import { loadRequest } from '@redux/home/actions'
+import { fetchVideo } from '@redux/Info/actions'
 import FieldSearch from './fieldSearch'
 
 interface StateProps {

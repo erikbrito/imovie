@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
-import films from './Home/reducers'
+import films from './home/reducers'
 import video from './Info/reducers'
-import movie from './Search/reducers'
+import movie from './search/reducers'
 
 export default combineReducers ({
   films,
