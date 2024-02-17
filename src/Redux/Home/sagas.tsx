@@ -15,5 +15,4 @@ export default function* load() {
   } catch (err) {
     yield put(loadFailure())
   }
-  // yield put(loadSuccess(actions.data.results, animations.data.results, war.data.results))
 }

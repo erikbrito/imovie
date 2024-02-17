@@ -59,7 +59,7 @@ const Home: React.FC<Props> = () => {
     navigation.navigate('About', { movie: war[index] })
   }
 
-  if ((Object.keys(actions).length !== 20) && (Object.keys(animations).length !== 20) && (Object.keys(war).length !== 20)) {
+  if ((Object.keys(actions).length === 0) && (Object.keys(animations).length === 0) && (Object.keys(war).length === 0)) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#fff" />
@@ -82,7 +82,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
                 {Object.keys(actions).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemActions(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`action-button-${index}`} onPress={() => itemActions(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${actions[index].poster_path}` }} style={styles.images} />
@@ -106,7 +106,7 @@ const Home: React.FC<Props> = () => {
                 {Object.keys(adventure).map((index: string) => {
 
                   return (
-                    <TouchableHighlight onPress={() => itemAdventure(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`adventure-button-${index}`} onPress={() => itemAdventure(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${adventure[index].poster_path}` }} style={styles.images} />
@@ -130,7 +130,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(animations).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemAnimations(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`animations-button-${index}`} onPress={() => itemAnimations(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${animations[index].poster_path}` }} style={styles.images} />
@@ -154,7 +154,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(war).map((index: string) => {
                   return (
-                    <TouchableHighlight onPress={() => itemWar(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`war-button-${index}`} onPress={() => itemWar(parseInt(index))} underlayColor="#433f64" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${war[index].poster_path}` }} style={styles.images} />
