@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Genres } from '@redux/home/types'
 import { AplicationState } from '@redux/store'
 import { loadRequest } from '@redux/home/actions'
-import { fetchVideo } from '@redux/Info/actions'
+import { fetchVideo } from '@redux/about/actions'
 import FieldSearch from './fieldSearch'
 
 interface StateProps {

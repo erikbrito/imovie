@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '@redux/store'
-import { Video, Details } from '@redux/Info/types'
+import { Video, Details } from '@redux/about/types'
 import { WebView } from 'react-native-webview'
 import { Button, Card, Portal, Dialog } from 'react-native-paper'
 import { useRoute } from '@react-navigation/native'
@@ -21,7 +21,7 @@ interface Infor {
 
 type Props = Params & Infor
 
-const Info: React.FC<Props> = () => {
+const About: React.FC<Props> = () => {
   const [modalVisible, setModalVisible] = useState(false)
 
   const route = useRoute()
@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Info
+export default About

@@ -4,7 +4,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { AplicationState } from '@redux/store'
-import { fetchVideo } from '@redux/Info/actions'
+import { fetchVideo } from '@redux/about/actions'
 import { Movie } from '@redux/search/types'
 import FieldSearch from './fieldSearch'
 
@@ -37,7 +37,7 @@ const Search: React.FC<Params> = () => {
           <View style={{ flexDirection: 'column', margin: 2, justifyContent: "space-between" }}>
             {Object.keys(movie).map((index: string) => {
               return (
-                <TouchableHighlight onPress={() => itemPressed(index)} underlayColor="#433f64" key={index}>
+                <TouchableHighlight testID={`movie-button-${index}`} onPress={() => itemPressed(index)} underlayColor="#433f64" key={index}>
 
                   <View key={index} style={styles.containerMovie}>
                     <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${movie[index].poster_path}` }} style={styles.images} />
