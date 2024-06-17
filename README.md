@@ -1,4 +1,4 @@
-# MOVIEFLIX
+# IMOVIE
 
 ![movieflix-1](https://github.com/erikbrito/movieflix/assets/5699834/a78ac6a3-4900-43a7-8f6b-73c5010c8f92)
 ![movieflix-2](https://github.com/erikbrito/movieflix/assets/5699834/b5b687a3-5119-47bc-9b49-8a8f67b7c926)
