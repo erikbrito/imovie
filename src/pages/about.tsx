@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, Platform, ActivityIndicator } from 'react-native'
 import { useSelector } from 'react-redux'
 import { AplicationState } from '@redux/store'
-import { Video, Details } from '@redux/about/types'
+import { Video, Details } from 'src/Redux/About/types'
 import { WebView } from 'react-native-webview'
 import { Button, Card, Portal, Dialog } from 'react-native-paper'
 import { useRoute } from '@react-navigation/native'
@@ -39,7 +39,7 @@ const About: React.FC<Props> = () => {
   if (routeParams.movie.id !== id) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" color="#fff" />
+        <ActivityIndicator size="large" color="#1f1d1d" />
         <Text style={{ fontWeight: 'bold', fontSize: 18, margin: 5, color: '#fff'}}>Loading...</Text>
       </View>
     )
@@ -54,7 +54,7 @@ const About: React.FC<Props> = () => {
             <View style={styles.containerMovie}>
               <Image source={{ uri: `https://image.tmdb.org/t/p/w500/${poster_path}` }} style={styles.images} />
 
-              <Card style={{ flex: 1, margin: 1, backgroundColor: '#4b4771' }}>
+              <Card style={{ flex: 1, margin: 1, backgroundColor: '#1f1d1d' }}>
                 <View style={styles.containerInfo}>
 
                   <Text numberOfLines={4} style={styles.title}>{title}</Text>
@@ -69,7 +69,7 @@ const About: React.FC<Props> = () => {
                 </View>
 
                 <View style={{ flex: 1, justifyContent: "flex-end", margin: 8 }}>
-                  <Button icon='heart' onPress={() => { setModalVisible(!modalVisible) }} mode='elevated' style={{ position: "relative", bottom: 5 }}>
+                  <Button icon='heart' onPress={() => { setModalVisible(!modalVisible) }} mode='elevated' style={{ position: "relative", bottom: 5, color:"1f1d1d" }}>
                     Favorite
                   </Button>
                 </View>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5
-  },
+  }
 })
 
 export default About

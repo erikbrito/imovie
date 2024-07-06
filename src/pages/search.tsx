@@ -4,8 +4,8 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { AplicationState } from '@redux/store'
-import { fetchVideo } from '@redux/about/actions'
-import { Movie } from '@redux/search/types'
+import { fetchVideo } from '@redux/About/actions'
+import { Movie } from '@redux/Search/types'
 import FieldSearch from './fieldSearch'
 
 interface Params {

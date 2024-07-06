@@ -2,7 +2,7 @@ import React from 'react'
 import {StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
-import { fetchMovie } from '@redux/search/actions'
+import { fetchMovie } from '@redux/Search/actions'
 import { Searchbar } from 'react-native-paper'
 
 const fieldSearch: React.FC = () => {

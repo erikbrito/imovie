@@ -3,11 +3,12 @@ import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, } from 'r
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { Genres } from '@redux/home/types'
 import { AplicationState } from '@redux/store'
-import { loadRequest } from '@redux/home/actions'
-import { fetchVideo } from '@redux/about/actions'
+import { Genres } from '@redux/Home/types'
+import { loadRequest } from '@redux/Home/actions'
+import { fetchVideo } from '@redux/About/actions'
 import FieldSearch from './fieldSearch'
+import * as SplashScreen from 'expo-splash-screen'
 
 interface StateProps {
   actions: Genres[]
@@ -26,7 +27,10 @@ type Props = StateProps & DispatchProps
 
 const Home: React.FC<Props> = () => {
   useEffect(() => {
-    loadRequest()
+    setTimeout(() => {
+      SplashScreen.hideAsync()
+      loadRequest()
+    }, 5000)
   }, [])
 
   const actions = useSelector((state: AplicationState) => state.films.actions)
@@ -82,7 +86,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row', margin: 2, justifyContent: "space-between" }}>
                 {Object.keys(actions).map((index: string) => {
                   return (
-                    <TouchableHighlight testID={`action-button-${index}`} onPress={() => itemActions(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`action-button-${index}`} onPress={() => itemActions(parseInt(index))} underlayColor="#3d3b3b" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${actions[index].poster_path}` }} style={styles.images} />
@@ -106,7 +110,7 @@ const Home: React.FC<Props> = () => {
                 {Object.keys(adventure).map((index: string) => {
 
                   return (
-                    <TouchableHighlight testID={`adventure-button-${index}`} onPress={() => itemAdventure(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`adventure-button-${index}`} onPress={() => itemAdventure(parseInt(index))} underlayColor="#3d3b3b" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${adventure[index].poster_path}` }} style={styles.images} />
@@ -130,7 +134,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(animations).map((index: string) => {
                   return (
-                    <TouchableHighlight testID={`animations-button-${index}`} onPress={() => itemAnimations(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`animations-button-${index}`} onPress={() => itemAnimations(parseInt(index))} underlayColor="#3d3b3b" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${animations[index].poster_path}` }} style={styles.images} />
@@ -154,7 +158,7 @@ const Home: React.FC<Props> = () => {
               <View style={{ flexDirection: 'row' }}>
                 {Object.keys(war).map((index: string) => {
                   return (
-                    <TouchableHighlight testID={`war-button-${index}`} onPress={() => itemWar(parseInt(index))} underlayColor="#433f64" key={index}>
+                    <TouchableHighlight testID={`war-button-${index}`} onPress={() => itemWar(parseInt(index))} underlayColor="#3d3b3b" key={index}>
 
                       <View key={index}>
                         <Image source={{ uri: `https://image.tmdb.org/t/p/w500${war[index].poster_path}` }} style={styles.images} />

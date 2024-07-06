@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import Search from '@pages/search'
+import Search from 'src/Pages/search'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

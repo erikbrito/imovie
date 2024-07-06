@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects'
 
-import load from './home/sagas'
-import  watchRequestInfo from './about/sagas'
-import  watchRequestMovie from './search/sagas'
+import load from './Home/sagas'
+import  watchRequestInfo from './About/sagas'
+import  watchRequestMovie from './Search/sagas'
 
 export default function* rootSaga() {
   return yield all([

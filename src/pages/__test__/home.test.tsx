@@ -2,7 +2,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import Home from '@pages/home'
+import Home from 'src/Pages/home'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

@@ -7,11 +7,14 @@ module.exports = function(api) {
       [
         'module-resolver',
         {
+          envName: 'APP_ENV',
+          moduleName: '@env',
+          path: '.env',
           root: ['./src'],
           alias: {
-            '@/pages': './src/pages',
-            '@/redux': './src/redux',
-            '@/services': './src/services',
+            '@/pages': './src/Pages',
+            '@/redux': './src/Redux',
+            '@/services': './src/Services',
           },
         },
       ],

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "films_and_series_search",
-    "slug": "films_and_series_search",
+    "name": "Imove",
+    "slug": "Imove",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1f1d1d"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,11 +20,18 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#1f1d1d"
+      },
+      "package": "com.zerik.imove",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "284a2480-e54a-453a-8ad9-96d4b8a582fe"
+      }
     }
   }
 }

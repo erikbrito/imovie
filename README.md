@@ -40,9 +40,10 @@ $ Open the Expo app and access via QR Code or run your cell phone emulator via A
 ### 🛠 Tecnologias
 
 - [Expo](https://expo.io/)
+- [Jest](https://jestjs.io/pt-BR/)
 - [Node.js](https://nodejs.org/en/)
 - [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [The Movie DB](https://developers.themoviedb.org/3)
 - [Redux](https://redux.js.org/introduction/getting-started)
 - [Redux-Saga](https://redux-saga.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [The Movie DB](https://developers.themoviedb.org/3)
