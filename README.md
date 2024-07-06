@@ -1,17 +1,16 @@
-# IMOVIE
+# MOVIEFLIX
 
-![imovie-1](https://github.com/erikbrito/imovie/assets/5699834/9e2423b9-e144-40e7-9ca8-9105b4bd417b)
-![imovie-2](https://github.com/erikbrito/imovie/assets/5699834/8a4307bc-c23e-42fb-8c72-16dec585825a)
+![movieflix-1](https://github.com/erikbrito/movieflix/assets/5699834/a78ac6a3-4900-43a7-8f6b-73c5010c8f92)
+![movieflix-2](https://github.com/erikbrito/movieflix/assets/5699834/b5b687a3-5119-47bc-9b49-8a8f67b7c926)
+
 
 <p float="left">
-  <img src="https://github.com/erikbrito/imovie/assets/5699834/e03ac7a3-09e7-4053-b0c6-6719183dbe35" height="440" width="240">
-  <img src="https://github.com/erikbrito/imovie/assets/5699834/f20813dd-7b4e-4234-b186-175b68691e8a" height="440" width="240">
-  <img src="https://github.com/erikbrito/imovie/assets/5699834/232975df-3cb1-4711-817d-7f843282971d" height="440" width="240">
-  <img src="https://github.com/erikbrito/imovie/assets/5699834/1e2d9af5-9c77-4858-8cf3-90fc3a37cd65" height="440" width="240">
+  <img src="https://user-images.githubusercontent.com/5699834/101828951-063bd780-3b11-11eb-852a-9c0d8eb424f7.png" height="520" width="260">
+  <img src="https://user-images.githubusercontent.com/5699834/101829020-22d80f80-3b11-11eb-83ff-4a97c4976924.png" height="520" width="260">
+  <img src="https://user-images.githubusercontent.com/5699834/101829104-3f744780-3b11-11eb-9691-00f90c5b2d9c.png" height="520" width="260">
 </p>
 
-### Status: Done!
-
+### Status: Done
 
 ### Features
 
@@ -40,10 +39,9 @@ $ Open the Expo app and access via QR Code or run your cell phone emulator via A
 ### 🛠 Tecnologias
 
 - [Expo](https://expo.io/)
-- [Jest](https://jestjs.io/pt-BR/)
 - [Node.js](https://nodejs.org/en/)
 - [React Native](https://reactnative.dev/)
-- [Redux](https://redux.js.org/introduction/getting-started)
-- [Redux-Saga](https://redux-saga.js.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [The Movie DB](https://developers.themoviedb.org/3)
+- [Redux](https://redux.js.org/introduction/getting-started)
+- [Redux-Saga](https://redux-saga.js.org/)
