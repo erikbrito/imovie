@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import FieldSearch from 'src/Pages/fieldSearch'
+import FieldSearch from '@pages/fieldSearch'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
