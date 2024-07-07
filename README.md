@@ -17,7 +17,7 @@
 
 - [x] Home: List Movies, Title and Summary (Branch update_part_2) (without the contents of branch 3 and 4)
 - [x] More about film (Branch update_part_3) (without the contents of branch 4)
-- [x] Search Movies (Branch update_part_4) (complete project)
+- [x] Search Movies (Branch update_part_4 or master) (complete project)
 
 ### Prerequisites
 Before you start, you will need to have installed and EXPO on the system and on your smartphone (https://docs.expo.io/get-started/installation/)
