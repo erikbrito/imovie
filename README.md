@@ -20,22 +20,15 @@
 - [x] Search Movies (Branch update_part_4 or master) (complete project)
 
 ### Prerequisites
-Before you start, you will need to have installed and EXPO on the system and on your smartphone (https://docs.expo.io/get-started/installation/)
-or
-Install Android Studio to emulate on your system
+Before starting, you will need to have EXPO installed on the system and on your smartphone (check the documentation: https://docs.expo.io/get-started/installation/) or install Android Studio to emulate on your system and create access the key here https://www.themoviedb.org/ and save it in the env file with the variable EXPO_PUBLIC_API_KEY
 
-# Clone this repository
-$ git clone <https://github.com/erikbrito/movieflix.git>
+# Steps to install
+1. Clone this repository
+2. Install dependencies
+3. create an account on the movie database API and create an access key
+4. save the access key in the env file with the variable EXPO_PUBLIC_API_KEY
+5. Run the application via npm/yarn start or if you prefer, use npx expo start (check the documentation: https://docs.expo.dev/more/expo-cli/)
 
-# Install the dependencies
-$ npm install
-
-# Run the application
-$ npm start
-or
-$ expo start or npx expo start
-
-$ Open the Expo app and access via QR Code or run your cell phone emulator via Android Studio by entering the local address that is running the app
 
 ### 🛠 Tecnologias
 
