@@ -22,7 +22,7 @@
 ### Prerequisites
 Before starting, you will need to have EXPO installed on the system and on your smartphone (check the documentation: https://docs.expo.io/get-started/installation/) or install Android Studio to emulate on your system and create access the key here https://www.themoviedb.org/ and save it in the env file with the variable EXPO_PUBLIC_API_KEY
 
-# Steps to install
+### Steps to install
 1. Clone this repository
 2. Install dependencies
 3. create an account on the movie database API and create an access key
