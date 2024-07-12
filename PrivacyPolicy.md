@@ -2,13 +2,15 @@
 
 The iMove application does not store any personal information about the user. The information about the name of the film, which is provided by the user during use, is not archived at any time and is only passed on to The Movie DB website in order to simply search for information on the films searched for.
 
-* The iMove app is free for any age
+* The iMove app is free
+* The iMove app is free to use for all ages
 * The iMove app does not require any data about users
 * This version is just a portfolio with no other objective
+* The iMove application does not contain any explicit content
 
 ### By using the application, you agree to the following privacy policy:
 
-* The iMove app is free for any age, including children under 13.
+* The iMove app is free to use for all ages, including children under 13.
 * The Imove application does not collect personal information from the user, such as name, address, telephone number or any other personal information.
 * The only information that can be collected is the name of the film, which is provided by the user during the search.
 * The Imove application does not share the information collected with third parties, except for the name of the film entered by the user, the information is only shared with The movie DB application in order to obtain the necessary information.
