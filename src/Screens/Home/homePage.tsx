@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { AplicationState } from '@Redux/store'
 import FieldSearch from '@Global/Components/fieldSearch'
-import Movies from '@Components/movies'
+import Movies from '@Components/Movies'
 import { Genres } from '@Redux/Home/types'
 import { Container } from '@Global/styles'
 

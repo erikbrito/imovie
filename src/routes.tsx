@@ -17,7 +17,7 @@ import store from '@Redux/store'
 import Home from '@Screens/Home/homePage'
 import Search from '@Screens/Discover/discoverPage'
 import About from '@Screens/About/aboutPage'
-import AboutMe from '@Screens/AboutMe/aboutMe'
+import AboutMe from '@Screens/AboutMe/AboutMePage'
 
 const theme = {
   roundness: 2,

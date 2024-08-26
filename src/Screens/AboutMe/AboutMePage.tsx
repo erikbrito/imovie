@@ -1,6 +1,6 @@
 import React from 'react'
 import {Linking} from 'react-native'
-import { AboutContainer, Image, Title, TextContainer, Link } from './aboutMe.styles'
+import { AboutContainer, Image, Title, TextContainer, Link } from './AboutMePage.styles'
 
 interface Params {
 }
