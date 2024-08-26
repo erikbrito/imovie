@@ -3,8 +3,10 @@ import { render, waitFor } from '@testing-library/react-native'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import { ThemeProvider } from 'styled-components/native'
+import Theme from '@Global/Theme/theme'
 
-import About from '@pages/about'
+import About from '@Screens/About/aboutPage'
 
 // This mock was placed because of an error coming from the webview
 jest.mock('react-native-webview', () => {
@@ -66,7 +68,9 @@ describe('genero function', () => {
     const { getByText } = render(
       <Provider store={store}>
         <PaperProvider>
-          <About video={[]} id={0} movie={{ id: 0 }} title={''} overview={''} details={undefined} />
+          <ThemeProvider theme={Theme}>
+            <About video={[]} id={0} movie={{ id: 0 }} title={''} overview={''} details={undefined} />
+          </ThemeProvider>
         </PaperProvider>
       </Provider>
     )

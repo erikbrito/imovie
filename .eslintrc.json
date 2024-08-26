@@ -3,9 +3,16 @@
       "browser": true,
       "es2021": true
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", "mjs", ".jsx", ".ts", ".tsx", ".d.ts"]
+      }
+    }
+  },
   "overrides": [
     {
-      "files": ["**/*.ts", "**/*.tsx", "**/*.js"],
+      "files": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.d.ts", "src/theme/theme.tsx"],
       "env": { "browser": true, "es6": true, "node": true },
       "extends": [
         "eslint:recommended",

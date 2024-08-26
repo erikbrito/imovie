@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Imove",
-    "slug": "Imove",
+    "name": "Imovie",
+    "slug": "Imovie",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1f1d1d"
       },
-      "package": "com.zerik.imove",
+      "package": "com.zerik.imovie",
       "versionCode": 2
     },
     "web": {

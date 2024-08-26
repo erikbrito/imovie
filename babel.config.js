@@ -10,12 +10,7 @@ module.exports = function(api) {
           envName: 'APP_ENV',
           moduleName: '@env',
           path: '.env',
-          root: ['./src'],
-          alias: {
-            '@/pages': './src/Pages',
-            '@/redux': './src/Redux',
-            '@/services': './src/Services',
-          },
+          root: ['./src']
         },
       ],
     ]

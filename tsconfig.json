@@ -1,11 +1,18 @@
 {
+  "include": ["src", "**/*.d.ts", "./babel.config.js", "src/**/*.ts", "global/Theme/styled.d.ts"],
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@pages/*": ["src/Pages/*"],
-      "@redux/*": ["src/Redux/*"],
-      "@services/*": ["src/Services/*"]
+      "@Screens/*": ["src/Screens/*"],
+      "@Redux/*": ["src/Redux/*"],
+      "@Services/*": ["src/Services/*"],
+      "@Components/*": ["global/Components/*"],
+      "@Assets/*": ["assets/*"],
+      "@Global/*": ["global/*"]
     }
   },
   "extends": "expo/tsconfig.base",
+  "exclude": [
+    "node_modules"
+  ]
 }

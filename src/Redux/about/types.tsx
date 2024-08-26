@@ -28,6 +28,13 @@ export interface Details {
   genres: Array<{ id: number, name: string }>
 }
 
+export interface PropTypes {
+  error: undefined
+  meta: undefined
+  payload: string
+  type: string
+}
+
 /**
  * State types
  */

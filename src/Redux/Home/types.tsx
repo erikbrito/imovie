@@ -24,5 +24,4 @@ export interface FilmsState {
    readonly animations: Genres[]
    readonly war: Genres[]
    readonly loading: boolean
-   readonly error: boolean
  }

@@ -1,8 +1,10 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import { ThemeProvider } from 'styled-components/native'
 
-import FieldSearch from '@pages/fieldSearch'
+import Theme from '@Global/Theme/theme'
+import FieldSearch from '@Global/Components/fieldSearch'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -19,7 +21,9 @@ describe('searchPress function', () => {
 
     const { getByPlaceholderText } = render(
       <Provider store={store}>
-        <FieldSearch />
+        <ThemeProvider theme={Theme}>
+          <FieldSearch />
+        </ThemeProvider>
       </Provider>
     )
 

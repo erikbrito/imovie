@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, Store } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { FilmsState } from './Home/types'
 import { VideoState } from './About/types'
-import { MovieState } from './Search/types'
+import { MovieState } from './Discover/types'
 
 import rootReducer from './rootReducer'
 import rootSaga from './rootSaga'

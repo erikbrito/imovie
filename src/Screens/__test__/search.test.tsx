@@ -1,8 +1,10 @@
 import { render, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import { ThemeProvider } from 'styled-components/native'
+import Theme from '@Global/Theme/theme'
 
-import Search from '@pages/search'
+import Search from '@Screens/Discover/discoverPage'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -27,7 +29,9 @@ describe('itemPressed function', () => {
 
     const { getByTestId } = render(
       <Provider store={store}>
-        <Search movie={[]} />
+        <ThemeProvider theme={Theme}> 
+          <Search movie={[]} />
+        </ThemeProvider>
       </Provider>
     )
 
