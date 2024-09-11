@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import api from '@Services/api'
+import api from '@Services/Api'
 import { getSuccess, getFailure } from './actions'
 import { MovieTypes } from './types'
 
@@ -11,13 +11,15 @@ export default function* watchRequestMovie() {
 function* searchMovie(action: any) {
   try {
     const query = action.payload
-    
+
     if (query !== undefined) {
-      const response = yield call(api.get, `search/movie?api_key=${process.env.EXPO_PUBLIC_API_KEY}&query=${query}`)
-      
+      const response = yield call(
+        api.get,
+        `search/movie?api_key=${process.env.EXPO_PUBLIC_API_KEY}&query=${query}`
+      )
+
       yield put(getSuccess(response.data.results))
     }
-    
   } catch (error) {
     yield put(getFailure())
   }

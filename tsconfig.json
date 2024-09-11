@@ -4,7 +4,7 @@
     "**/*.d.ts",
     "src/**/*.ts",
     "./babel.config.js",
-    "global/Theme/styled.d.ts",
+    "Global/Theme/Styled.d.ts",
     "./App.tsx",
     "Utils/*.ts"
   ],
@@ -14,9 +14,9 @@
       "@Screens/*": ["src/Screens/*"],
       "@Redux/*": ["src/Redux/*"],
       "@Services/*": ["src/Services/*"],
-      "@Components/*": ["global/Components/*"],
+      "@Components/*": ["Global/Components/*"],
       "@Assets/*": ["assets/*"],
-      "@Global/*": ["global/*"],
+      "@Global/*": ["Global/*"],
       "@Utils/*": ["Utils/*"]
     }
   },

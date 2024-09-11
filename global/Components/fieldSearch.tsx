@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchMovie } from '@Redux/Discover/actions'
-import { DiscoverBar } from '@Global/Components/styled.styles'
-import { useAppNavigation } from '@Utils/useAppNavigation'
+import { DiscoverBar } from '@Components/Styled.styles'
+import { useAppNavigation } from '@Utils/UseAppNavigation'
 
 const FieldSearch: React.FC = () => {
   const navigation = useAppNavigation<'Search'>()

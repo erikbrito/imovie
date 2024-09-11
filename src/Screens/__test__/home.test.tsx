@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store'
 import { ThemeProvider } from 'styled-components/native'
 import Theme from '@Global/Theme/theme'
 
-import Movies from '@Components/Movies'
+import Movies from '@Global/Components/Movies'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

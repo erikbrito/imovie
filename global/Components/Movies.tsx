@@ -3,13 +3,8 @@ import { ScrollView, TouchableHighlight } from 'react-native'
 import { Genres } from '@Redux/Home/types'
 import { useDispatch } from 'react-redux'
 import { fetchVideo } from '@Redux/About/actions'
-import {
-  View,
-  Title,
-  InternalView,
-  Poster
-} from '@Global/Components/styled.styles'
-import { useAppNavigation } from '@Utils/useAppNavigation'
+import { View, Title, InternalView, Poster } from '@Components/Styled.styles'
+import { useAppNavigation } from '@Utils/UseAppNavigation'
 
 interface StateProps {
   movies: Genres[]

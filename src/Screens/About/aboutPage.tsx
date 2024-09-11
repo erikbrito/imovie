@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { AplicationState } from '@Redux/store'
 import { Video, Details } from '@Redux/About/types'
 import { useRoute } from '@react-navigation/native'
-import { Container } from '@Global/styles'
+import { Container } from '@Global/Styles'
 import {
   LoadindContainer,
   Loading,
@@ -18,8 +18,8 @@ import {
   Text,
   Trailer,
   Youtube
-} from './aboutPage.styles'
-import theme from '@Global/Theme/theme'
+} from './AboutPage.styles'
+import theme from '@Global/Theme/Theme'
 import { IconButton } from 'react-native-paper'
 
 interface Params {

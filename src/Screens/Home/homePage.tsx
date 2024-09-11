@@ -3,10 +3,10 @@ import * as SplashScreen from 'expo-splash-screen'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { AplicationState } from '@Redux/store'
-import FieldSearch from '@Global/Components/fieldSearch'
-import Movies from '@Components/Movies'
+import FieldSearch from '@Components/FieldSearch'
+import Movies from 'Global/Components/Movies'
 import { Genres } from '@Redux/Home/types'
-import { Container } from '@Global/styles'
+import { Container } from '@Global/Styles'
 
 interface StateProps {
   actions: Genres[]

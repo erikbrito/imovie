@@ -5,18 +5,18 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { PaperProvider, MD3LightTheme } from 'react-native-paper'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Fontisto  from '@expo/vector-icons/Fontisto'
+import Fontisto from '@expo/vector-icons/Fontisto'
 import Feather from '@expo/vector-icons/Feather'
 import { ThemeProvider } from 'styled-components/native'
 
-import Theme from '@Global/Theme/theme'
+import Theme from '@Global/Theme/Theme'
 
 import { Provider } from 'react-redux'
 import store from '@Redux/store'
 
-import Home from '@Screens/Home/homePage'
-import Search from '@Screens/Discover/discoverPage'
-import About from '@Screens/About/aboutPage'
+import Home from '@Screens/Home/HomePage'
+import Search from '@Screens/Discover/DiscoverPage'
+import About from '@Screens/About/AboutPage'
 import AboutMe from '@Screens/AboutMe/AboutMePage'
 
 const theme = {
@@ -25,7 +25,7 @@ const theme = {
     ...MD3LightTheme.colors,
     primary: Theme.COLORS.TERTIARY,
     secondary: Theme.COLORS.SECONDARY,
-    tertiary: Theme.COLORS.TERTIARY,
+    tertiary: Theme.COLORS.TERTIARY
   }
 }
 
@@ -41,12 +41,12 @@ const LogoTitle = () => {
   )
 }
 
-function MyStack(){
+function MyStack() {
   return (
     <AppStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: Theme.COLORS.PRIMARY,
+          backgroundColor: Theme.COLORS.PRIMARY
         },
         headerTintColor: Theme.COLORS.TERTIARY,
         headerTitleAlign: 'center',
@@ -59,8 +59,13 @@ function MyStack(){
         cardStyle: {
           backgroundColor: Theme.COLORS.PRIMARY
         }
-      }}>
-      <AppStack.Screen name="homePage" component={Home} options={{ headerTitle: (props: any) => <LogoTitle {... props} /> }}/>
+      }}
+    >
+      <AppStack.Screen
+        name="homePage"
+        component={Home}
+        options={{ headerTitle: (props: any) => <LogoTitle {...props} /> }}
+      />
       <AppStack.Screen name="About" component={About} />
       <AppStack.Screen name="Search" component={Search} />
       <AppStack.Screen name="About Me" component={AboutMe} />
@@ -71,7 +76,7 @@ function MyStack(){
 const Routes = () => {
   return (
     <Provider store={store}>
-      <PaperProvider  theme={theme}>
+      <PaperProvider theme={theme}>
         <ThemeProvider theme={Theme}>
           <NavigationContainer>
             <Tab.Navigator
@@ -80,7 +85,7 @@ const Routes = () => {
                   position: 'absolute',
                   backgroundColor: '#1f1d1d',
                   elevation: 0,
-                  height: 70,
+                  height: 70
                 },
                 tabBarItemStyle: {
                   borderRadius: 20,
@@ -89,23 +94,23 @@ const Routes = () => {
                 headerShown: false,
                 tabBarActiveTintColor: Theme.COLORS.TERTIARY,
                 tabBarInactiveTintColor: Theme.COLORS.SECONDARY,
-                tabBarActiveBackgroundColor : Theme.COLORS.SECONDARY,
+                tabBarActiveBackgroundColor: Theme.COLORS.SECONDARY,
                 // tabBarInactiveBackgroundColor : Theme.COLORS.TERTIARY,
                 tabBarLabelStyle: {
                   // color: Theme.COLORS.TERTIARY,
-                  fontSize: 15,
+                  fontSize: 15
                 }
               }}
             >
-              <Tab.Screen 
+              <Tab.Screen
                 name="Home"
                 component={MyStack}
-                options={{ 
-                  // tabBarLabel: 'Home', 
-                  headerTitle: (props: any) => <LogoTitle {... props} />,
+                options={{
+                  // tabBarLabel: 'Home',
+                  headerTitle: (props: any) => <LogoTitle {...props} />,
                   tabBarIcon: ({ color }) => (
                     <Fontisto name="home" color={color} size={22} />
-                  ),
+                  )
                 }}
               />
               <Tab.Screen
@@ -114,8 +119,8 @@ const Routes = () => {
                 options={{
                   // tabBarLabel: 'About',
                   tabBarIcon: ({ color }) => (
-                    <Feather name="info" color={color} size={22}  />
-                  ),
+                    <Feather name="info" color={color} size={22} />
+                  )
                   // tabBarBadge: 3,
                 }}
               />

@@ -1,9 +1,9 @@
 import styled from 'styled-components/native'
-import { Container } from '@Global/styles'
+import { Container } from '@Global/Styles'
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen"
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 
 export const AboutContainer = styled(Container)`
   flex: 1;
@@ -14,9 +14,9 @@ export const AboutContainer = styled(Container)`
 
 export const TextContainer = styled.View`
   flex: 1;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   flex-direction: row;
-  margin-left: ${wp('15%')}px; 
+  margin-left: ${wp('15%')}px;
   margin-top: 5%;
 `
 
@@ -35,7 +35,7 @@ export const Image = styled.Image`
 export const Title = styled.Text`
   left: 0;
   width: ${wp('100%')}px;
-  top: ${({ lenghtTitle }) => lenghtTitle ? hp('20%') : hp('20%')}px;
+  top: ${({ lenghtTitle }) => (lenghtTitle ? hp('20%') : hp('20%'))}px;
   color: ${({ theme }) => theme.COLORS.TERTIARY};
   font-weight: bold;
   font-size: 30px;

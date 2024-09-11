@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AplicationState } from '@Redux/store'
 import { fetchVideo } from '@Redux/About/actions'
 import { Movie } from '@Redux/Discover/types'
-import FieldSearch from '@Global/Components/fieldSearch'
-import { Container } from '@Global/styles'
+import FieldSearch from '@Components/FieldSearch'
+import { Container } from '@Global/Styles'
 import {
   ListImages,
   ResultContainer,
@@ -19,7 +19,7 @@ import {
   Info,
   Title,
   Overview
-} from './discoverPage.styles'
+} from './DiscoverPage.styles'
 
 interface Params {
   movie: Movie[]
