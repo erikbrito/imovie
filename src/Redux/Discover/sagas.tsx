@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import api from '../../Services/api'
+import api from '@Services/api'
 import { getSuccess, getFailure } from './actions'
 import { MovieTypes, PropTypes } from './types'
 

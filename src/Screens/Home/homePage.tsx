@@ -24,8 +24,13 @@ type Props = StateProps & DispatchProps
 
 SplashScreen.preventAutoHideAsync()
 
-const Home: React.FC<Props> = ({ actions, adventures, animations, war, loading }) => {
-
+const Home: React.FC<Props> = ({
+  actions,
+  adventures,
+  animations,
+  war,
+  loading
+}) => {
   const onLayoutRootView = useCallback(async () => {
     if (loading) {
       await SplashScreen.hideAsync()
@@ -38,14 +43,13 @@ const Home: React.FC<Props> = ({ actions, adventures, animations, war, loading }
 
   return (
     <Container onLayout={onLayoutRootView}>
-
       <FieldSearch />
 
       <ScrollView>
-        <Movies movies={actions} session='Action'/>
-        <Movies movies={adventures} session='Adventure'/>
-        <Movies movies={animations} session='Animation'/>
-        <Movies movies={war} session='War'/>
+        <Movies movies={actions} session="Action" />
+        <Movies movies={adventures} session="Adventure" />
+        <Movies movies={animations} session="Animation" />
+        <Movies movies={war} session="War" />
       </ScrollView>
     </Container>
   )
@@ -56,7 +60,7 @@ const mapStateToProps = (state: AplicationState) => ({
   adventures: state.films.adventure,
   animations: state.films.animations,
   war: state.films.war,
-  loading: state.films.loading,
+  loading: state.films.loading
 })
 
 export default connect(mapStateToProps)(Home)

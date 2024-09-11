@@ -1,13 +1,25 @@
 import React from 'react'
-import {  ScrollView, TouchableHighlight } from 'react-native'
-import { useNavigation, NavigationProp, ParamListBase } from '@react-navigation/native'
+import { ScrollView, TouchableHighlight } from 'react-native'
+import {
+  useNavigation,
+  NavigationProp,
+  ParamListBase
+} from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
 import { AplicationState } from '@Redux/store'
 import { fetchVideo } from '@Redux/About/actions'
 import { Movie } from '@Redux/Discover/types'
 import FieldSearch from '@Global/Components/fieldSearch'
 import { Container } from '@Global/styles'
-import { ListImages, ResultContainer, Result, Poster, Info, Title, Overview } from './discoverPage.styles'
+import {
+  ListImages,
+  ResultContainer,
+  Result,
+  Poster,
+  Info,
+  Title,
+  Overview
+} from './discoverPage.styles'
 
 interface Params {
   movie: Movie[]
@@ -15,10 +27,10 @@ interface Params {
 
 const Search: React.FC<Params> = () => {
   const movie = useSelector((state: AplicationState) => state.movie.data)
-  
+
   const useAppNavigation: () => NavigationProp<ParamListBase> = useNavigation
   const navigation = useAppNavigation()
-  
+
   const dispatch = useDispatch()
   const itemPressed = (index: string) => {
     dispatch(fetchVideo(movie[index].id))
@@ -27,33 +39,37 @@ const Search: React.FC<Params> = () => {
 
   return (
     <Container>
-
       <FieldSearch />
 
       <ScrollView>
-
         <ListImages>
-
-          <ResultContainer >
+          <ResultContainer>
             {Object.keys(movie).map((index: string) => {
               return (
-                <TouchableHighlight testID={`movie-button-${index}`} onPress={() => itemPressed(index)} underlayColor="#433f64" key={index}>
-
+                <TouchableHighlight
+                  testID={`movie-button-${index}`}
+                  onPress={() => itemPressed(index)}
+                  underlayColor="#433f64"
+                  key={index}
+                >
                   <Result key={index}>
-                    <Poster source={{ uri: `https://image.tmdb.org/t/p/w500/${movie[index].poster_path}` }} />
+                    <Poster
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500/${movie[index].poster_path}`
+                      }}
+                    />
 
                     <Info>
                       <Title>{movie[index].title}</Title>
-                      <Overview numberOfLines={6} ellipsizeMode="tail">{movie[index].overview}</Overview>
+                      <Overview numberOfLines={6} ellipsizeMode="tail">
+                        {movie[index].overview}
+                      </Overview>
                     </Info>
-
                   </Result>
-
                 </TouchableHighlight>
               )
             })}
           </ResultContainer>
-
         </ListImages>
       </ScrollView>
     </Container>

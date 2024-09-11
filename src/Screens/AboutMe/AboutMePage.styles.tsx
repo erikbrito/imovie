@@ -5,29 +5,37 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen"
 
-export const AboutContainer  = styled(Container)`
+export const AboutContainer = styled(Container)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) => theme.COLORS.PRIMARY};
 `
+
 export const TextContainer = styled.View`
   flex: 1;
   flex-wrap: wrap; 
   flex-direction: row;
   margin-left: ${wp('15%')}px; 
-  margin-top: 5px
-`
-export const Image = styled.Image`
-  width: ${wp('50%')}px;
-  height: ${hp('30%')}px;
-  margin-top: ${wp('25%')}px;
-  margin-left: ${wp('25%')}px;
-  border-width: 5px;
-  border-radius: ${wp('50%')}px;
+  margin-top: 5%;
 `
 
-export const Title  = styled.Text`
+export const ImageContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+`
+
+export const Image = styled.Image`
+  width: 50%;
+  height: 25%;
+  margin-top: ${hp('15%')}px;
+  border-radius: 50px;
+`
+
+export const Title = styled.Text`
   left: 0;
-  width: ${wp('95%')}px;
-  top: ${({ lenghtTitle }) => lenghtTitle ? hp('20%') : hp('25%')}px;
+  width: ${wp('100%')}px;
+  top: ${({ lenghtTitle }) => lenghtTitle ? hp('20%') : hp('20%')}px;
   color: ${({ theme }) => theme.COLORS.TERTIARY};
   font-weight: bold;
   font-size: 30px;

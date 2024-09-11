@@ -1,5 +1,13 @@
 {
-  "include": ["src", "**/*.d.ts", "./babel.config.js", "src/**/*.ts", "global/Theme/styled.d.ts"],
+  "include": [
+    "src",
+    "**/*.d.ts",
+    "src/**/*.ts",
+    "./babel.config.js",
+    "global/Theme/styled.d.ts",
+    "./App.tsx",
+    "Utils/*.ts"
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
@@ -8,11 +16,10 @@
       "@Services/*": ["src/Services/*"],
       "@Components/*": ["global/Components/*"],
       "@Assets/*": ["assets/*"],
-      "@Global/*": ["global/*"]
+      "@Global/*": ["global/*"],
+      "@Utils/*": ["Utils/*"]
     }
   },
   "extends": "expo/tsconfig.base",
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

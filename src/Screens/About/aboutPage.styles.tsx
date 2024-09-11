@@ -31,12 +31,12 @@ export const InfoHeader = styled.View`
 
 export const Image = styled.ImageBackground`
   width: ${wp('100%')}px;
-  height: ${hp('40%')}px;
+  height: ${hp('38%')}px;
   justify-content: space-between;
   background-color:'#00000060';
 `
 
-export const Title  = styled.Text`
+export const Title = styled.Text`
   position: absolute;
   left: 0;
   width: ${wp('95%')}px;
@@ -47,15 +47,15 @@ export const Title  = styled.Text`
   margin: ${wp('1%')}px;
 `
 
-export const Gradient  = styled(LinearGradient)`
+export const Gradient = styled(LinearGradient)`
   position: absolute;
   left: 0;
   right: 0;
   top: ${wp('5%')}px;
-  height: ${hp('37%')}px
+  height: ${hp('38%')}px
 `
 
-export const Badges  = styled(Chip)`
+export const Badges = styled(Chip)`
   position: relative;
   width: 65px;
   float: left;
@@ -64,7 +64,7 @@ export const Badges  = styled(Chip)`
   background-color: ${({ theme }) => theme.COLORS.SECONDARY};
   border-radius: 50px;
 `
-export const Favorite  = styled(Icon)`
+export const Favorite = styled(Icon)`
 position: relative;
   width: 65px;
   float: left;

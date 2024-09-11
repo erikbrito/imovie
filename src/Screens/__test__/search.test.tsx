@@ -1,3 +1,4 @@
+import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
@@ -9,8 +10,8 @@ import Search from '@Screens/Discover/discoverPage'
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
   useNavigation: () => ({
-    navigate: jest.fn(),
-  }),
+    navigate: jest.fn()
+  })
 }))
 
 describe('itemPressed function', () => {
@@ -18,9 +19,19 @@ describe('itemPressed function', () => {
     const initialState = {
       movie: {
         data: [
-          {"id": 351465, "title": "title1", "poster_path": "/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg", "overview": "overview1"}, 
-          {"id": 231456, "title": "title2", "poster_path": "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg", "overview": "overview2"}
-        ],
+          {
+            id: 351465,
+            title: 'title1',
+            poster_path: '/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg',
+            overview: 'overview1'
+          },
+          {
+            id: 231456,
+            title: 'title2',
+            poster_path: '/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg',
+            overview: 'overview2'
+          }
+        ]
       },
       loadRequest: false
     }
@@ -29,7 +40,7 @@ describe('itemPressed function', () => {
 
     const { getByTestId } = render(
       <Provider store={store}>
-        <ThemeProvider theme={Theme}> 
+        <ThemeProvider theme={Theme}>
           <Search movie={[]} />
         </ThemeProvider>
       </Provider>
@@ -40,7 +51,12 @@ describe('itemPressed function', () => {
     fireEvent.press(movieButton)
 
     const actions = store.getActions()
-    const expectedPayload = {"error": undefined, "meta": undefined, "payload": 351465, "type": "@video/FETCH_VIDEO"}
+    const expectedPayload = {
+      error: undefined,
+      meta: undefined,
+      payload: 351465,
+      type: '@video/FETCH_VIDEO'
+    }
 
     expect(actions).toEqual([expectedPayload])
   })

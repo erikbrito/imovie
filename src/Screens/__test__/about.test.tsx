@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-var-requires */
+import React from 'react'
 import { render, waitFor } from '@testing-library/react-native'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { Provider } from 'react-redux'
@@ -18,7 +20,7 @@ jest.mock('react-native-webview', () => {
   return {
     WebView,
     default: WebView,
-    __esModule: true,
+    __esModule: true
   }
 })
 
@@ -27,15 +29,15 @@ jest.mock('@react-navigation/native', () => ({
   useRoute: () => ({
     params: {
       movie: {
-        "id": 951,
-        "results": [
-          {"name": "No Official"},
-          {"name": "Official Trailer"},
-          {"name": "Official Teaser"}
+        id: 951,
+        results: [
+          { name: 'No Official' },
+          { name: 'Official Trailer' },
+          { name: 'Official Teaser' }
         ]
       }
-    },
-  }),
+    }
+  })
 }))
 
 describe('genero function', () => {
@@ -43,23 +45,22 @@ describe('genero function', () => {
     const initialState = {
       video: {
         details: {
-          "genres": [
-            {"id": 1, "name": "Comedy"},
-          ],
-          "id": 951,
-          "overview": "These naive and driven children are going to go through the most confusion in this noisy film, with this cop taken out of the way so that no one can make a mistake!",
-          "poster_path": "/q5Pk0utXHTqOgvRtlRxu8AMqGLC.jpg",
-          "release_date": "2024-01-26",
-          "runtime": 111,
-          "title": "Kindergarten Cop",
-          "vote_average": 555,
+          genres: [{ id: 1, name: 'Comedy' }],
+          id: 951,
+          overview:
+            'These naive and driven children are going to go through the most confusion in this noisy film, with this cop taken out of the way so that no one can make a mistake!',
+          poster_path: '/q5Pk0utXHTqOgvRtlRxu8AMqGLC.jpg',
+          release_date: '2024-01-26',
+          runtime: 111,
+          title: 'Kindergarten Cop',
+          vote_average: 555
         },
         data: [
-          {"name": "No Official"},
-          {"name": "Official Trailer"},
-          {"name": "Official Teaser"}
+          { name: 'No Official' },
+          { name: 'Official Trailer' },
+          { name: 'Official Teaser' }
         ]
-      },
+      }
     }
 
     const mockStore = configureStore()
@@ -69,14 +70,22 @@ describe('genero function', () => {
       <Provider store={store}>
         <PaperProvider>
           <ThemeProvider theme={Theme}>
-            <About video={[]} id={0} movie={{ id: 0 }} title={''} overview={''} details={undefined} />
+            <About
+              // @ts-expect-error
+              video={[]}
+              id={0}
+              movie={{ id: 0 }}
+              title={''}
+              overview={''}
+              details={undefined}
+            />
           </ThemeProvider>
         </PaperProvider>
       </Provider>
     )
 
     jest.useFakeTimers()
-    
+
     await waitFor(() => getByText('Comedy'))
 
     expect(getByText('Comedy')).toBeTruthy()

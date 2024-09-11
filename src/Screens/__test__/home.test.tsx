@@ -1,10 +1,11 @@
+import React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react-native'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { ThemeProvider } from 'styled-components/native'
 import Theme from '@Global/Theme/theme'
 
-import Movies from '@Components/movies'
+import Movies from '@Components/Movies'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),
@@ -15,10 +16,22 @@ jest.mock('@react-navigation/native', () => ({
 
 const initialState = {
   films: {
-    action: [{"id": 351465, "poster_path": "/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg" }, {"id": 231456, "poster_path": "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg"}],
-    adventure: [{"id": 72165, "poster_path": "/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg" }, {"id": 16952, "poster_path": "/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg"}],
-    animations: [{"id": 99432, "poster_path": "/ldfCF9RhR40mppkzmftxapaHeTo.jpg" }, {"id": 54682, "poster_path": "/nesuSdJakNkf0zs7OfoasB6Clxf.jpg"}],
-    war: [{"id": 51264, "poster_path": "/vcZWJGvB5xydWuUO1vaTLI82tGi.jpg" }, {"id": 44687, "poster_path": "/adMcxfUonnm9RvPImGHy25wYUks.jpg"}]
+    action: [
+      { id: 351465, poster_path: '/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg' },
+      { id: 231456, poster_path: '/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg' }
+    ],
+    adventure: [
+      { id: 72165, poster_path: '/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg' },
+      { id: 16952, poster_path: '/mBaXZ95R2OxueZhvQbcEWy2DqyO.jpg' }
+    ],
+    animations: [
+      { id: 99432, poster_path: '/ldfCF9RhR40mppkzmftxapaHeTo.jpg' },
+      { id: 54682, poster_path: '/nesuSdJakNkf0zs7OfoasB6Clxf.jpg' }
+    ],
+    war: [
+      { id: 51264, poster_path: '/vcZWJGvB5xydWuUO1vaTLI82tGi.jpg' },
+      { id: 44687, poster_path: '/adMcxfUonnm9RvPImGHy25wYUks.jpg' }
+    ]
   }
 }
 
@@ -29,8 +42,8 @@ describe('itemActions function', () => {
 
     const { getByTestId } = render(
       <Provider store={store}>
-        <ThemeProvider theme={Theme}> 
-          <Movies movies={initialState.films.action} session='Action' />
+        <ThemeProvider theme={Theme}>
+          <Movies movies={initialState.films.action} session="Action" />
         </ThemeProvider>
       </Provider>
     )
@@ -41,7 +54,12 @@ describe('itemActions function', () => {
     fireEvent.press(actionButton)
     const actions = store.getActions()
 
-    const expectedPayload = {"error": undefined, "meta": undefined, "payload": 351465, "type": "@video/FETCH_VIDEO"}
+    const expectedPayload = {
+      error: undefined,
+      meta: undefined,
+      payload: 351465,
+      type: '@video/FETCH_VIDEO'
+    }
     expect(actions).toEqual([expectedPayload])
   })
 })
@@ -53,8 +71,8 @@ describe('itemAdventure function', () => {
 
     const { getByTestId } = render(
       <Provider store={store}>
-        <ThemeProvider theme={Theme}> 
-          <Movies movies={initialState.films.adventure} session='Adventure' />
+        <ThemeProvider theme={Theme}>
+          <Movies movies={initialState.films.adventure} session="Adventure" />
         </ThemeProvider>
       </Provider>
     )
@@ -65,7 +83,12 @@ describe('itemAdventure function', () => {
     fireEvent.press(adventureButton)
     const adventure = store.getActions()
 
-    const expectedPayload = {"error": undefined, "meta": undefined, "payload": 72165, "type": "@video/FETCH_VIDEO"}
+    const expectedPayload = {
+      error: undefined,
+      meta: undefined,
+      payload: 72165,
+      type: '@video/FETCH_VIDEO'
+    }
     expect(adventure).toEqual([expectedPayload])
   })
 })
@@ -77,8 +100,8 @@ describe('itemAnimations function', () => {
 
     const { getByTestId } = render(
       <Provider store={store}>
-        <ThemeProvider theme={Theme}> 
-          <Movies movies={initialState.films.animations} session='Animation' />
+        <ThemeProvider theme={Theme}>
+          <Movies movies={initialState.films.animations} session="Animation" />
         </ThemeProvider>
       </Provider>
     )
@@ -89,7 +112,12 @@ describe('itemAnimations function', () => {
     fireEvent.press(animationButton)
     const animation = store.getActions()
 
-    const expectedPayload = {"error": undefined, "meta": undefined, "payload": 99432, "type": "@video/FETCH_VIDEO"}
+    const expectedPayload = {
+      error: undefined,
+      meta: undefined,
+      payload: 99432,
+      type: '@video/FETCH_VIDEO'
+    }
     expect(animation).toEqual([expectedPayload])
   })
 })
@@ -102,7 +130,7 @@ describe('itemWar function', () => {
     const { getByTestId } = render(
       <Provider store={store}>
         <ThemeProvider theme={Theme}>
-          <Movies movies={initialState.films.war} session='War' />
+          <Movies movies={initialState.films.war} session="War" />
         </ThemeProvider>
       </Provider>
     )
@@ -113,7 +141,12 @@ describe('itemWar function', () => {
     fireEvent.press(warButton)
     const war = store.getActions()
 
-    const expectedPayload = {"error": undefined, "meta": undefined, "payload": 51264, "type": "@video/FETCH_VIDEO"}
+    const expectedPayload = {
+      error: undefined,
+      meta: undefined,
+      payload: 51264,
+      type: '@video/FETCH_VIDEO'
+    }
     expect(war).toEqual([expectedPayload])
   })
 })
