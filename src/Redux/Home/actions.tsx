@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { FilmsTypes, Genres } from './types'
+import { FilmsTypes, Genres } from './Types'
 
 export const loadRequest = () => action(FilmsTypes.LOAD_REQUEST)
 

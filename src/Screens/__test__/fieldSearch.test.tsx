@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { ThemeProvider } from 'styled-components/native'
 
-import Theme from '@Global/Theme/Theme'
-import FieldSearch from '@Components/FieldSearch'
+import Theme from '@Globals/theme/Theme'
+import FieldSearch from '@Globals/components/FieldSearch'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

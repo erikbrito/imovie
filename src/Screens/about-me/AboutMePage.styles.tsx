@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { Container } from '@Global/Styles'
+import { Container } from '@Globals/Styles'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp

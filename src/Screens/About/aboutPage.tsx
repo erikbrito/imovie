@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { View, ScrollView, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
-import { AplicationState } from '@Redux/store'
-import { Video, Details } from '@Redux/About/types'
+import { AplicationState } from 'src/redux/Store'
+import { Video, Details } from '@Redux/about/Types'
 import { useRoute } from '@react-navigation/native'
-import { Container } from '@Global/Styles'
+import { Container } from '@Globals/Styles'
 import {
   LoadindContainer,
   Loading,
@@ -19,7 +19,7 @@ import {
   Trailer,
   Youtube
 } from './AboutPage.styles'
-import theme from '@Global/Theme/Theme'
+import theme from '@Globals/theme/Theme'
 import { IconButton } from 'react-native-paper'
 
 interface Params {

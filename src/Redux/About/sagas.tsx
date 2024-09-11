@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import api from '@Services/Api'
-import { getSuccess, getFailure } from './actions'
-import { VideoTypes } from './types'
+import { getSuccess, getFailure } from './Actions'
+import { VideoTypes } from './Types'
 
 export default function* watchRequestInfo() {
   yield takeLatest(VideoTypes.FETCH_VIDEO, detailsVideo)

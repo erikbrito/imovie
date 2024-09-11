@@ -1,9 +1,9 @@
 import React from 'react'
 import { ScrollView, TouchableHighlight } from 'react-native'
-import { Genres } from '@Redux/Home/types'
+import { Genres } from '@Redux/home/Types'
 import { useDispatch } from 'react-redux'
-import { fetchVideo } from '@Redux/About/actions'
-import { View, Title, InternalView, Poster } from '@Components/Styled.styles'
+import { fetchVideo } from '@Redux/about/Actions'
+import { View, Title, InternalView, Poster } from './Styled.styles'
 import { useAppNavigation } from '@Utils/UseAppNavigation'
 
 interface StateProps {
@@ -11,7 +11,8 @@ interface StateProps {
   session: string
 }
 
-const ListMovies: React.FC<StateProps> = ({ movies, session }) => {
+const Movies
+: React.FC<StateProps> = ({ movies, session }) => {
   const navigation = useAppNavigation<'Movie'>()
 
   const dispatch = useDispatch()
@@ -51,4 +52,5 @@ const ListMovies: React.FC<StateProps> = ({ movies, session }) => {
   )
 }
 
-export default ListMovies
+export default Movies
+

@@ -4,7 +4,7 @@
 export enum VideoTypes {
   FETCH_VIDEO = '@video/FETCH_VIDEO',
   GET_SUCCESS = '@video/GET_SUCCESS',
-  GET_FAILURE = '@video/GET_FAILURE',
+  GET_FAILURE = '@video/GET_FAILURE'
 }
 
 /**
@@ -25,15 +25,15 @@ export interface Details {
   release_date: string
   vote_average: number
   runtime: number
-  genres: Array<{ id: number, name: string }>
+  genres: Array<{ id: number; name: string }>
 }
 
 /**
  * State types
  */
 export interface VideoState {
-   readonly data: Video[]
-   readonly details: Details | never
-   readonly fetch: boolean
-   readonly error: boolean
- }
+  readonly data: Video[]
+  readonly details: Details | never
+  readonly fetch: boolean
+  readonly error: boolean
+}

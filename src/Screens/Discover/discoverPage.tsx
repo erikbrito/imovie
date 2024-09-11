@@ -6,11 +6,11 @@ import {
   ParamListBase
 } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { AplicationState } from '@Redux/store'
-import { fetchVideo } from '@Redux/About/actions'
-import { Movie } from '@Redux/Discover/types'
-import FieldSearch from '@Components/FieldSearch'
-import { Container } from '@Global/Styles'
+import { AplicationState } from 'src/redux/Store'
+import { fetchVideo } from '@Redux/about/Actions'
+import { Movie } from '@Redux/discover/Types'
+import FieldSearch from '@Globals/components/FieldSearch'
+import { Container } from '@Globals/Styles'
 import {
   ListImages,
   ResultContainer,

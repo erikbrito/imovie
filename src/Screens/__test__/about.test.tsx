@@ -6,9 +6,9 @@ import { Provider as PaperProvider } from 'react-native-paper'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { ThemeProvider } from 'styled-components/native'
-import Theme from '@Global/Theme/Theme'
+import Theme from '@Globals/theme/Theme'
 
-import About from '@Screens/About/AboutPage'
+import About from 'src/screens/about/AboutPage'
 
 // This mock was placed because of an error coming from the webview
 jest.mock('react-native-webview', () => {

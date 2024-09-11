@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchMovie } from '@Redux/Discover/actions'
-import { DiscoverBar } from '@Components/Styled.styles'
+import { fetchMovie } from '@Redux/discover/Actions'
+import { DiscoverBar } from './Styled.styles'
 import { useAppNavigation } from '@Utils/UseAppNavigation'
 
 const FieldSearch: React.FC = () => {

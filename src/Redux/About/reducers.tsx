@@ -1,20 +1,19 @@
 import { Reducer } from 'redux'
-import { VideoState, VideoTypes } from './types'
+import { VideoState, VideoTypes } from './Types'
 
 type Action = {
   type: string
   payload: {
-    data: [],
+    data: []
     details: {
-      id: 0,
-      overview: '',
-      title: '',
-      name: '',
+      id: 0
+      overview: ''
+      title: ''
+      name: ''
       genres: []
     }
   }
 }
-
 
 const INITIAL_STATE: VideoState = {
   data: [],
@@ -36,13 +35,18 @@ const INITIAL_STATE: VideoState = {
 
 const reducer: Reducer = (state = INITIAL_STATE, action: Action) => {
   switch (action.type) {
-  case VideoTypes.GET_SUCCESS:
-    return { ...state,  error: false, data: action.payload.data, details: action.payload.details }
-  case VideoTypes.GET_FAILURE:
-    return { ...state, error: true, data: [], details: {} }
-  default:
-    return state
+    case VideoTypes.GET_SUCCESS:
+      return {
+        ...state,
+        error: false,
+        data: action.payload.data,
+        details: action.payload.details
+      }
+    case VideoTypes.GET_FAILURE:
+      return { ...state, error: true, data: [], details: {} }
+    default:
+      return state
   }
 }
-      
+
 export default reducer

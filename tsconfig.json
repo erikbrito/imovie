@@ -4,20 +4,19 @@
     "**/*.d.ts",
     "src/**/*.ts",
     "./babel.config.js",
-    "Global/Theme/Styled.d.ts",
+    "globals/theme/Styled.d.ts",
     "./App.tsx",
-    "Utils/*.ts"
+    "utils/*.ts"
   ],
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@Screens/*": ["src/Screens/*"],
-      "@Redux/*": ["src/Redux/*"],
-      "@Services/*": ["src/Services/*"],
-      "@Components/*": ["Global/Components/*"],
-      "@Assets/*": ["assets/*"],
-      "@Global/*": ["Global/*"],
-      "@Utils/*": ["Utils/*"]
+      "@Screens/*": ["src/screens/*"],
+      "@Redux/*": ["src/redux/*"],
+      "@Services/*": ["src/services/*"],
+      "@Assets/*": ["assets/*"],      
+      "@Globals/*": ["globals/*"],       
+      "@Utils/*": ["utils/*"]
     }
   },
   "extends": "expo/tsconfig.base",

@@ -2,11 +2,11 @@ import React, { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { ScrollView } from 'react-native'
 import { connect } from 'react-redux'
-import { AplicationState } from '@Redux/store'
-import FieldSearch from '@Components/FieldSearch'
-import Movies from 'Global/Components/Movies'
-import { Genres } from '@Redux/Home/types'
-import { Container } from '@Global/Styles'
+import { AplicationState } from 'src/redux/Store'
+import FieldSearch from '@Globals/components/FieldSearch'
+import Movies from '@Globals/components/Movies'
+import { Genres } from '@Redux/home/Types'
+import { Container } from '@Globals/Styles'
 
 interface StateProps {
   actions: Genres[]

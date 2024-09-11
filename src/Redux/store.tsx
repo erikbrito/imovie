@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, Store } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { FilmsState } from './Home/types'
-import { VideoState } from './About/types'
-import { MovieState } from './Discover/types'
+import { FilmsState } from './home/Types'
+import { VideoState } from './about/Types'
+import { MovieState } from './discover/Types'
 
-import rootReducer from './rootReducer'
-import rootSaga from './rootSaga'
+import rootReducer from './RootReducer'
+import rootSaga from './RootSaga'
 
 export interface AplicationState {
   films: FilmsState,

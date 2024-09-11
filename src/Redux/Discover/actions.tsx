@@ -1,5 +1,5 @@
 import { action } from 'typesafe-actions'
-import { MovieTypes, Movie } from './types'
+import { MovieTypes, Movie } from './Types'
 
 export const fetchMovie = (movie: unknown) => action(MovieTypes.FETCH_MOVIE, movie)
 

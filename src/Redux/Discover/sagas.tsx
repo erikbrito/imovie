@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import api from '@Services/Api'
-import { getSuccess, getFailure } from './actions'
-import { MovieTypes, PropTypes } from './types'
+import { getSuccess, getFailure } from './Actions'
+import { MovieTypes, PropTypes } from './Types'
 
 export default function* watchRequestMovie() {
   yield takeLatest(MovieTypes.FETCH_MOVIE, searchMovie)

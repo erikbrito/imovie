@@ -9,15 +9,15 @@ import Fontisto from '@expo/vector-icons/Fontisto'
 import Feather from '@expo/vector-icons/Feather'
 import { ThemeProvider } from 'styled-components/native'
 
-import Theme from '@Global/Theme/Theme'
+import Theme from '@Globals/theme/Theme'
 
 import { Provider } from 'react-redux'
-import store from '@Redux/store'
+import store from 'src/redux/Store'
 
-import Home from '@Screens/Home/HomePage'
-import Search from '@Screens/Discover/DiscoverPage'
-import About from '@Screens/About/AboutPage'
-import AboutMe from '@Screens/AboutMe/AboutMePage'
+import Home from '@Screens/home/HomePage'
+import Search from '@Screens/discover/DiscoverPage'
+import About from 'src/screens/about/AboutPage'
+import AboutMe from '@Screens/about-me/AboutMePage'
 
 const theme = {
   roundness: 2,

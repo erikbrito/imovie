@@ -38,7 +38,6 @@
       "plugins": ["@typescript-eslint", "react", "react-hooks"],
       "rules": {
         "no-console": ["error", { "allow": ["error"] }],
-        "indent": ["error", 2],
         "semi": ["error", "never"]
       }
     }

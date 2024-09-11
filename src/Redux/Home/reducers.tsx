@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { FilmsState, FilmsTypes } from './types'
+import { FilmsState, FilmsTypes } from './Types'
 
 type Action = {
   type: string

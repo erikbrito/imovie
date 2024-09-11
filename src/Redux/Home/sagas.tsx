@@ -1,6 +1,6 @@
 import { call, put, delay } from 'redux-saga/effects'
 import api from '@Services/Api'
-import { loadSuccess, loadFailure } from './actions'
+import { loadSuccess, loadFailure } from './Actions'
 
 export default function* load() {
   try {
