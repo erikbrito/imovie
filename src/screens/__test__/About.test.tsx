@@ -8,7 +8,7 @@ import configureStore from 'redux-mock-store'
 import { ThemeProvider } from 'styled-components/native'
 import Theme from '@Globals/theme/Theme'
 
-import About from 'src/screens/about/AboutPage'
+import About from '@Screens/about/AboutPage'
 
 // This mock was placed because of an error coming from the webview
 jest.mock('react-native-webview', () => {

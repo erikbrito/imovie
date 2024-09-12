@@ -11,6 +11,11 @@
     "test": "jest",
     "postinstall": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  },
   "jest": {
     "preset": "jest-expo",
     "setupFilesAfterEnv": [
